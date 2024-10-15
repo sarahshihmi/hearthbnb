@@ -11,8 +11,10 @@ const getSpots = (payload) => {
 
 export const getAllSpots = () => async (dispatch) => {
 	const res = await csrfFetch('/api/spots');
+    
 	if (res.ok) {
 		const data = await res.json();
+        console.log('Fetched Spots from API:', data.Spots); 
 		dispatch(getSpots(data.Spots));
 		return data;
 	}
@@ -22,7 +24,7 @@ const initialState = {
     spots: []  // Initial state is an empty array
   };
   
-  const spotsReducer = (state = initialState, action) => {
+const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
       case GET_SPOTS:
         return {

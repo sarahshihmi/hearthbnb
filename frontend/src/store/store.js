@@ -1,9 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import spotsReducer from './spot';
 
 const rootReducer = combineReducers({
-
+  spots: spotsReducer
 });
+
+
 
 let enhancer;
 if (import.meta.env.MODE === 'production') {
