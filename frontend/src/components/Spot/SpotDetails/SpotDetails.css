@@ -1,77 +1,128 @@
 .spot-details-container {
-  max-width: 1200px;
+  max-width: 1000px; /* Ensure that the content doesn't stretch too far */
   margin: 0 auto;
   padding: 20px;
 }
 
 .spot-name {
-  font-size: 2.5rem;
+  font-size: 32px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
 .spot-location {
-  font-size: 1.2rem;
-  color: #555;
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
-/* Images Section */
+/* Grid layout for images */
 .images-section {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  margin-bottom: 20px; /* Space between images and the next section */
 }
 
 .large-image {
-  flex: 2;
   width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 8px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .small-images {
-  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .small-image {
+  width: 24%;
+  height: auto;
+}
+
+/* Separator Line */
+.separator {
+  margin: 30px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Grid layout for description and booking */
+.content-grid {
+  display: grid;
+  grid-template-columns: 65% 30%; /* 65% for description, 30% for booking */
+  gap: 20px;
+}
+
+.description-section {
+  display: flex;
+  flex-direction
+  : column;
+}
+
+.booking-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.booking-section .booking-component {
   width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Host Information */
-.host-info {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+.booking-component button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/* Description */
-.description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
+.booking-component button:hover {
+  background-color: #ff787d;
 }
 
+/* Reviews heading */
+.reviews-component {
+  margin-top: 30px;
+}
 
-/* Responsive Images */
-@media (max-width: 768px) {
-  .images-section {
-    flex-direction: column;
-  }
+.reviews-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-  .large-image, .small-image {
-    height: auto;
-  }
+.reviews-list {
+  list-style: none;
+  padding: 0;
+}
 
-  .small-images {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+.review-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.review-header span {
+  font-weight: normal;
+  color: #666;
+}
+
+.review-header .dot {
+  margin: 0 5px;
+  color: #666;
 }

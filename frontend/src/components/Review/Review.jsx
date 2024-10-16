@@ -1,4 +1,3 @@
-import React from 'react';
 import './Review.css';
 
 const ReviewsComponent = ({ reviews, user, isOwner }) => {
