@@ -1,0 +1,59 @@
+.profile-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 150px; /* Adjust the width as needed */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure the dropdown is above other content */
+}
+
+.profile-dropdown li {
+  display: block; /* Ensure each list item takes up the full width */
+  padding: 10px 15px;
+  text-align: center;
+  border-bottom: 1px solid #f1f1f1;
+  cursor: pointer;
+}
+
+.profile-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.profile-dropdown.hidden {
+  display: none;
+}
+
+.profile-dropdown li button, 
+.profile-dropdown li a {
+  display: block;
+  width: 100%; /* Take full width to stack vertically */
+  padding: 10px;
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.profile-dropdown li button:hover,
+.profile-dropdown li a:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* Adjust icon size */
+}
+
+button:hover {
+  opacity: 0.8;
+}
