@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 //import LoginFormModal from './components/LoginFormModal';
 //import SignupFormModal from './components/SignupFormModal';
 import SpotsList from './components/Spot/SpotList/SpotList';
+import SpotDetails from './components/Spot/SpotDetails/SpotDetails';
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 
@@ -35,6 +36,11 @@ const App = () => {
           {
             path: '/',
             element: <SpotsList />
+          },
+          
+          {
+            path: '/spots/:id',
+            element: <SpotDetails />
           }
         ]
       }

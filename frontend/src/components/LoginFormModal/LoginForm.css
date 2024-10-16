@@ -1,0 +1,77 @@
+/* LoginForm.css */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;  /* Added max-width to prevent overflow */
+    box-sizing: border-box;  /* Ensures padding doesn't add to the width */
+  }
+  
+  form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;  /* Center the title */
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 100%;  /* Ensure label stretches properly */
+    text-align: left;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;  /* Ensure padding doesn't affect width */
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff385c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button:hover:not([disabled]) {
+    background-color: #e63950;
+  }
+  
+  form p {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Ensure modal content is responsive */
+  .modal-content {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;
+  }
+  
+  

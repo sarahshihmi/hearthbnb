@@ -1,20 +1,28 @@
+import './SpotTile.css';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for navigation
+
 const SpotTile = ({ spot }) => {
-    return (
-      <div className="spot-tile">
-        <img src={spot.imageUrl} alt={spot.name} className="spot-image" />
-        <div className="spot-details">
-          <div className="spot-location">
-            {spot.city}, {spot.state}
-          </div>
-          <div className="spot-rating">
-            ★ {spot.rating}
-          </div>
-          <div className="spot-price">
-            <strong>${spot.price}</strong> / night
-          </div>
-        </div>
-      </div>
-    );
+  const navigate = useNavigate();  // useNavigate replaces useHistory
+
+  const handleTileClick = () => {
+    navigate(`/spots/${spot.id}`);  // Navigate to spot details
   };
-  
-  export default SpotTile;
+
+  return (
+    <div
+      className="spot-tile"
+      data-tooltip={spot.name}  // Tooltip text
+      onClick={handleTileClick}  // Make entire tile clickable
+    >
+      <img src={spot.imageUrl} alt={spot.name} />
+      <div className="spot-details">
+        <h3>{spot.name}</h3>
+        <p>{spot.city}, {spot.state}</p>
+        <div className="spot-price">${spot.price}/night</div>
+        <div className="spot-rating">★ {spot.rating}</div>
+      </div>
+    </div>
+  );
+};
+
+export default SpotTile;

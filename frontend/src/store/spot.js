@@ -1,6 +1,8 @@
 import { csrfFetch } from "./csrf";
 
 const GET_SPOTS = 'spot/getSpots'
+const GET_SPOT_DETAILS = 'spot/getSpotDetails'
+
 
 const getSpots = (payload) => {
     return {
@@ -8,6 +10,12 @@ const getSpots = (payload) => {
         payload
     }
 }
+
+const getSpotDetails = (payload) => ({
+    type: GET_SPOT_DETAILS,
+    payload
+  });
+
 
 export const getAllSpots = () => async (dispatch) => {
 	const res = await csrfFetch('/api/spots');
@@ -20,8 +28,31 @@ export const getAllSpots = () => async (dispatch) => {
 	}
 };
 
+export const getSpotDetailsById = (spotId) => async (dispatch) => {
+    try {
+      const res = await csrfFetch(`/api/spots/${spotId}`);
+      if (res.ok) {
+        const data = await res.json();
+        console.log('Fetched Spot Details from API:', data);  // Debugging
+        dispatch(getSpotDetails(data));
+        return data;
+      } else if (res.status === 404) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || 'Spot not found');
+      } else {
+        console.error('Failed to fetch spot details:', res.statusText);
+        throw new Error('Failed to fetch spot details');
+      }
+    } catch (error) {
+      console.error('Error fetching spot details:', error);
+      throw error;
+    }
+  };
+
+
 const initialState = {
-    spots: []  // Initial state is an empty array
+    spots: [],  // Initial state is an empty array
+    spotDetails: {}
   };
   
 const spotsReducer = (state = initialState, action) => {
@@ -31,6 +62,11 @@ const spotsReducer = (state = initialState, action) => {
           ...state,
           spots: action.payload  // Update the spots array with the fetched data
         };
+        case GET_SPOT_DETAILS:
+            return {
+              ...state,
+              spotDetails: action.payload
+            }
       default:
         return state;  // Return the current state for any other action
     }
