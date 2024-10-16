@@ -1,0 +1,37 @@
+.reviews-component {
+    margin-top: 20px;
+  }
+  
+  .reviews-heading {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .dot {
+    margin: 0 5px;
+  }
+  
+  .reviews-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .review-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  
+  .no-reviews-message {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+  }
+  

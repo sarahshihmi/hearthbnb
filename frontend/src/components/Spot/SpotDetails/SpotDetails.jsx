@@ -2,20 +2,20 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpotDetailsById } from '../../../store/spot';
+import BookingComponent from '../../Booking'; // Make sure this is correctly imported
+import ReviewsComponent from '../../Review'; // Make sure this is correctly imported
 import './SpotDetails.css'; 
 
 const SpotDetails = () => {
   const { id } = useParams(); 
   const dispatch = useDispatch();
   
-
   const spot = useSelector(state => state.spots.spotDetails);
-  
+  const user = useSelector(state => state.session?.user);
   
   useEffect(() => {
     dispatch(getSpotDetailsById(id))
       .catch(err => {
-       
         console.error('Failed to fetch spot details:', err);
       });
   }, [dispatch, id]);
@@ -24,19 +24,33 @@ const SpotDetails = () => {
     return <div>Loading...</div>; 
   }
 
-
-  const { name, city, state, country, description, Owner, SpotImages } = spot;
-  
+  const {
+    name,
+    city,
+    state,
+    country,
+    description,
+    Owner,
+    SpotImages,
+    price = 'N/A',
+    avgRating = null, // Default to null if no avgRating
+    numReviews = 0,
+    Reviews = []
+  } = spot;
 
   const largeImage = SpotImages.find(img => img.preview === true) || SpotImages[0];
   const smallImages = SpotImages.filter(img => !img.preview).slice(0, 4);
+
+  // Ensure avgRating is a number, otherwise fallback to 'New'
+  const avgRatingDisplay = (typeof avgRating === 'number' && !isNaN(avgRating)) 
+    ? avgRating.toFixed(1)
+    : 'New';
 
   return (
     <div className="spot-details-container">
       <h1 className="spot-name">{name}</h1>
       <p className="spot-location">{city}, {state}, {country}</p>
       
-      {/* Images Section */}
       <div className="images-section">
         {largeImage && (
           <img src={largeImage.url} alt={`${name} Preview`} className="large-image" />
@@ -48,15 +62,23 @@ const SpotDetails = () => {
         </div>
       </div>
       
-      {/* Host Information */}
       <div className="host-info">
         <p>Hosted by {Owner.firstName} {Owner.lastName}</p>
       </div>
       
-      {/* Description */}
       <div className="description">
         <p>{description}</p>
       </div>
+    
+      {/* Booking Component */}
+      <BookingComponent
+        price={price}
+        avgRating={avgRatingDisplay}  // Pass the computed avgRatingDisplay
+        reviewCount={numReviews}
+      />
+
+      {/* Reviews Component */}
+      <ReviewsComponent reviews={Reviews} user={user} isOwner={user?.id === Owner.id} />
     </div>
   );
 };

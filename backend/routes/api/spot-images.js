@@ -15,6 +15,32 @@ const spot = require('../../db/models/spot');
 
 const router = express.Router();
 
+
+router.get('/:spotId', async (req, res) => {
+    const { spotId } = req.params;
+  
+    // Fetch the spot details along with associated SpotImages
+    const spot = await Spot.findByPk(spotId, {
+      include: [
+        {
+          model: SpotImage,
+          attributes: ['url', 'preview']  // Include only necessary fields
+        },
+        {
+          model: User,  // Include the Owner information if needed
+          as: 'Owner',
+          attributes: ['firstName', 'lastName']
+        }
+      ]
+    });
+  
+    if (!spot) {
+      return res.status(404).json({ message: "Spot not found" });
+    }
+  
+    return res.json(spot);
+  });
+  
 router.delete('/:imageId', restoreUser, requireAuth, async(req, res) => {
     const imageId = parseInt(req.params.imageId);
     const user = req.user;
