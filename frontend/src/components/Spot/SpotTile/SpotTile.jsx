@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 const SpotTile = ({ spot }) => {
   const navigate = useNavigate();
 
-  // Select the preview image or the first image if available
-  const previewImage = spot.SpotImages?.find(image => image.preview) || spot.SpotImages?.[0];
+  if (spot.id === 1) {
+    console.log(spot);
+  }
 
   const handleTileClick = () => {
     navigate(`/spots/${spot.id}`);  // Navigate to spot details
@@ -17,8 +18,8 @@ const SpotTile = ({ spot }) => {
       data-tooltip={spot.name}  // Tooltip text
       onClick={handleTileClick}  // Make entire tile clickable
     >
-      {previewImage ? (
-        <img src={previewImage.url} alt={spot.name} className="spot-image" />
+      {spot.previewImage ? (
+        <img src={spot.previewImage} alt={spot.name} className="spot-image" />
       ) : (
         <div className="placeholder-image">No Image Available</div>  // Fallback if no image
       )}

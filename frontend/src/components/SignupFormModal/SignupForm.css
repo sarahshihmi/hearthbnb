@@ -1,4 +1,19 @@
+.signup-errors {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.signup-errors ul {
+  list-style-type: disc;
+  padding-left: 20px; /* Adds space for the bullet point */
+}
+
+.signup-errors ul li {
+  margin-bottom: 5px;
+}
+
+/* Disable button style */
 button[disabled] {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+  background-color: #ccc;
+  cursor: not-allowed;
+}

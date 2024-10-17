@@ -10,7 +10,7 @@ const SpotDetails = () => {
   const { id } = useParams(); 
   const dispatch = useDispatch();
   const spot = useSelector(state => state.spots.spotDetails);
-  const user = useSelector(state => state.session?.user);
+  const user = useSelector(state => state.session.user);
   
   useEffect(() => {
     dispatch(getSpotDetailsById(id))
