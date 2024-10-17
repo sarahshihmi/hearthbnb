@@ -1,0 +1,94 @@
+/* Spot Tile Container */
+.spot-tile {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 8px; /* Reduced padding from 10px to 8px */
+    text-align: left; /* Ensure text is left-aligned */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;  /* Pointer cursor on hover */
+    position: relative; 
+    transition: transform 0.3s ease;  /* Hover effect */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure tiles have equal height */
+  }
+  
+/* Hover Effect */
+.spot-tile:hover {
+    transform: scale(1.02);  /* Slight scale on hover */
+}
+
+/* Spot Image */
+.spot-image {
+    width: 100%;
+    height: 180px; /* Adjust height for a more balanced look */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 8px; /* Reduced margin */
+}
+
+/* Placeholder Image */
+.placeholder-image {
+    width: 100%;
+    height: 180px; /* Match the spot-image height */
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    border-radius: 5px;
+    margin-bottom: 8px; /* Reduced margin */
+    font-size: 14px; /* Reduced font size */
+}
+
+/* Spot Details */
+.spot-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Reduced gap */
+    flex-grow: 1; /* Ensure details take up available space */
+}
+
+/* Spot Title */
+.spot-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    line-height: 1.2;
+    display: flex;
+    justify-content: space-between; /* Title and star rating aligned */
+    align-items: center;
+}
+
+/* Spot Rating */
+.spot-rating {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #ff5a5f; /* Star color */
+}
+
+/* Star Icon */
+.star-icon {
+    color: #ff5a5f; /* Red color */
+    margin-right: 3px;
+}
+
+/* Spot Location */
+.spot-location {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+    display: flex;
+    justify-content: space-between; /* Title and star rating aligned */
+    align-items: center;
+}
+
+/* Spot Price */
+.spot-price {
+    font-size: 14px; /* Reduced font size from 16px to 14px */
+    font-weight: bold;
+    color: #333;
+    text-align: left; /* Ensure left alignment */
+}
