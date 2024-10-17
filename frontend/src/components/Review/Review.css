@@ -1,37 +1,60 @@
 .reviews-component {
-    margin-top: 20px;
-  }
-  
-  .reviews-heading {
-    font-size: 22px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .dot {
-    margin: 0 5px;
-  }
-  
-  .reviews-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .review-item {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
-  }
-  
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-  }
-  
-  .no-reviews-message {
-    font-size: 16px;
-    color: #666;
-    text-align: center;
-  }
-  
+  padding: 20px;
+}
+
+.reviews-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  margin: 0 5px;
+}
+
+.reviews-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.review-item {
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 0;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.post-review-button {
+  background-color: #FF5A5F;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.post-review-button:hover {
+  background-color: #e94e4e;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #d9534f;
+}
