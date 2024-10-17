@@ -420,9 +420,6 @@ router.get('/', validateQuery, async (req, res) => {
         group: ['Spot.id'],
     });
 
-
-    console.log('Fetched Spots:', spot);
-
     return res.json(
         {Spots: spot, page: page, size: size}
     )

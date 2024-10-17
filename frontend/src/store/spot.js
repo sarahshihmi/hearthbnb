@@ -22,7 +22,6 @@ export const getAllSpots = () => async (dispatch) => {
     
 	if (res.ok) {
 		const data = await res.json();
-        console.log('Fetched Spots from API:', data.Spots); 
 		dispatch(getSpots(data.Spots));
 		return data;
 	}
@@ -33,7 +32,6 @@ export const getSpotDetailsById = (spotId) => async (dispatch) => {
       const res = await csrfFetch(`/api/spots/${spotId}`);
       if (res.ok) {
         const data = await res.json();
-        console.log('Fetched Spot Details from API:', data);  // Debugging
         dispatch(getSpotDetails(data));
         return data;
       } else if (res.status === 404) {

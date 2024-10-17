@@ -9,7 +9,6 @@ const { Op } = require('sequelize');
 router.use(handleValidationErrors)
 
 router.get('/current', requireAuth, async (req, res) => {
-  console.log('yay')
     const userId = req.user.id
     const bookings = await Booking.findAll({
         where: {
