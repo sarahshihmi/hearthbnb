@@ -1,3 +1,4 @@
+// SpotDetails.jsx
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -5,6 +6,8 @@ import BookingComponent from '../../Booking';
 import ReviewsComponent from '../../Review';   
 import { getSpotDetailsById } from '../../../store/spot';
 import { fetchReviews } from '../../../store/review';
+import OpenModalButton from '../../OpenModalButton'; 
+import PostReview from '../../Review'; 
 import './SpotDetails.css'; 
 
 const SpotDetails = () => {
@@ -32,16 +35,19 @@ const SpotDetails = () => {
     Owner,
     SpotImages,
     price = 'N/A',
-    avgRating = null,
-    numReviews = 0
+    // avgRating and numReviews are not destructured
   } = spot;
 
   const largeImage = SpotImages.find(img => img.preview === true) || SpotImages[0];
   const smallImages = SpotImages.filter(img => !img.preview).slice(0, 4);
 
-  const avgRatingDisplay = (typeof avgRating === 'number' && !isNaN(avgRating)) 
-    ? avgRating.toFixed(1)
+  // Compute average rating from reviews
+  const sumStars = reviews.reduce((sum, review) => sum + review.stars, 0);
+  const avgRatingDisplay = reviews.length > 0 
+    ? (sumStars / reviews.length).toFixed(1) 
     : 'New';
+
+  const numReviews = reviews.length;
 
   const canPostReview = user && !reviews.some(review => review.userId === user.id) && user.id !== Owner.id;
 
@@ -89,10 +95,9 @@ const SpotDetails = () => {
       {/* Separator Line */}
       <hr className="separator" />
 
-      {/* Reviews Section */}
       <div className="reviews-section">
         <h2 className="reviews-heading">
-          ★ {avgRatingDisplay}
+          <span className="star-icon">★</span> {avgRatingDisplay} 
           {numReviews > 0 && (
             <>
               <span className="dot"> · </span>
@@ -102,9 +107,13 @@ const SpotDetails = () => {
         </h2>
 
         {canPostReview && (
-          <button className="post-review-button">Post Your Review</button>
+          <OpenModalButton 
+            buttonText="Post Your Review" 
+            modalComponent={<PostReview spotId={id} />}
+          />
         )}
 
+        {/* Display reviews */}
         <ReviewsComponent reviews={reviews} user={user} isOwner={user?.id === Owner.id} />
       </div>
     </div>

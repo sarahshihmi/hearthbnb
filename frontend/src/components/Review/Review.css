@@ -1,60 +1,46 @@
+/* frontend/src/components/Review/Review.css */
+
 .reviews-component {
-  padding: 20px;
-}
-
-.reviews-heading {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.dot {
-  margin: 0 5px;
+  margin-top: 30px;
 }
 
 .reviews-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  display: block; /* Ensure block display */
 }
 
 .review-item {
-  border-bottom: 1px solid #eaeaea;
+  display: block; /* Ensure each review stacks vertically */
   padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .review-header {
-  display: flex;
-  justify-content: space-between;
   font-weight: bold;
   margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between; /* Align name and date on opposite ends */
 }
 
-.post-review-button {
-  background-color: #FF5A5F;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.post-review-button:hover {
-  background-color: #e94e4e;
-}
-
-.delete-button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.review-actions {
   margin-top: 10px;
 }
 
-.delete-button:hover {
-  background-color: #d9534f;
+.open-modal-button {
+  background-color: #ff5a5f; /* Red color */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.open-modal-button:hover {
+  background-color: #ff787d;
+}
+
+.no-reviews-message {
+  font-style: italic;
+  color: #666;
 }
