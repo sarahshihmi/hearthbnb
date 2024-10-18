@@ -9,6 +9,7 @@ import SpotDetails from './components/Spot/SpotDetails/SpotDetails';
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import CreateSpotForm from './components/CreateSpotForm';
+import ManageSpots from './components/ManageSpots';
 
 
 function Layout() {
@@ -45,6 +46,10 @@ const App = () => {
           {
             path: '/spots/:id',
             element: <SpotDetails />
+          },
+          {
+            path: '/spots/current',
+            element: <ManageSpots />
           }
         ]
       }

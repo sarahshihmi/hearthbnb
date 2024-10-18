@@ -125,28 +125,51 @@ router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
     return res.status(201).json(newImg);
 })
 
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
+  console.log('[Server] Handling request to /spots/current');  // Log to confirm /current is matched
+
+  const user = req.user;
+
+  try {
+    const spots = await Spot.scope('addRatings', 'addPreview').findAll({
+      where: { ownerId: user.id },
+    });
+
+    console.log('[Server] Fetched spots:', spots);
+    return res.json({ Spots: spots });
+  } catch (error) {
+    console.error('Error fetching user spots:', error);
+    return res.status(500).json({ message: 'Internal Server Error', details: error.message });
+  }
+});
 
 router.get('/:spotId/reviews', async (req, res) => {
-    const spotid = parseInt(req.params.spotId)
-    const spot = await Spot.findOne({where:{id:spotid}})
-    if(!spot) return res.status(404).json({message: "Spot couldn't be found"});
-    const reviews = await Review.findAll({
-        where: {spotId: spotid},
-        include: [
-            {
-                model: User,
-                attributes: ['id', 'firstName', 'lastName']
-            },
-            {
-                model: ReviewImage,
-                attributes: ['id', 'url']
-            }
-        ]
-    })
-    return res.json({Reviews: reviews})
-})
+  console.log('[Server] Handling request to /:spotId/reviews');  // Log when reviews route is being called
+
+  const spotid = parseInt(req.params.spotId);
+  const spot = await Spot.findOne({ where: { id: spotid } });
+  if (!spot) return res.status(404).json({ message: "Spot couldn't be found" });
+
+  const reviews = await Review.findAll({
+    where: { spotId: spotid },
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'firstName', 'lastName'],
+      },
+      {
+        model: ReviewImage,
+        attributes: ['id', 'url'],
+      },
+    ],
+  });
+  return res.json({ Reviews: reviews });
+});
+
 
 // backend/routes/api/spots.js
+
+
 
 router.post('/:spotId/reviews', restoreUser, requireAuth, ValidateReview, async (req, res) => {
   try {
@@ -201,17 +224,6 @@ router.post('/:spotId/reviews', restoreUser, requireAuth, ValidateReview, async 
   }
 });
 
-
-
-router.get('/current', restoreUser, requireAuth, async(req, res) => {
-    const user = req.user;
-    const spot = await Spot.scope('addRatings', 'addPreview').findAll({
-        where: {ownerId: user.id},
-    })
-
-    return res.json({Spots: spot})
-
-});
 
 router.get('/:id/bookings', requireAuth, async(req, res) => {
   const userId = req.user.id;

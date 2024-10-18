@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_SPOTS = 'spot/getSpots'
 const GET_SPOT_DETAILS = 'spot/getSpotDetails'
+const GET_USER_SPOTS = 'spot/getUserSpots';
 
 
 const getSpots = (payload) => {
@@ -16,6 +17,10 @@ const getSpotDetails = (payload) => ({
     payload
   });
 
+const getUserSpots = (payload) => ({
+    type: GET_USER_SPOTS,
+    payload,
+  });
 
 export const getAllSpots = () => async (dispatch) => {
 	const res = await csrfFetch('/api/spots');
@@ -63,12 +68,25 @@ export const getSpotDetailsById = (spotId) => async (dispatch) => {
       throw new Error(error.message || 'Failed to create spot');
     }
   };
+
   
+  export const fetchUserSpots = () => async (dispatch) => {
+    const res = await csrfFetch('/api/spots/current');
   
+    if (res.ok) {
+      const data = await res.json();
+      dispatch(getUserSpots(data.Spots)); // Make sure only spots data is dispatched
+      return data;
+    } else {
+      const error = await res.json();
+      throw new Error(error.message || 'Failed to fetch user spots');
+    }
+  };
 
 const initialState = {
     spots: [],  // Initial state is an empty array
-    spotDetails: {}
+    spotDetails: {},
+    userSpots: []
   };
   
 const spotsReducer = (state = initialState, action) => {
@@ -83,6 +101,11 @@ const spotsReducer = (state = initialState, action) => {
               ...state,
               spotDetails: action.payload
             }
+        case GET_USER_SPOTS:
+            return {
+                ...state,
+                userSpots: action.payload,
+            };
       default:
         return state;  // Return the current state for any other action
     }
