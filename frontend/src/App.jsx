@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import CreateSpotForm from './components/CreateSpotForm';
 import ManageSpots from './components/ManageSpots';
+import UpdateSpotForm from './components/UpdateSpotForm';
 
 
 function Layout() {
@@ -50,7 +51,11 @@ const App = () => {
           {
             path: '/spots/current',
             element: <ManageSpots />
-          }
+          },
+          {
+            path: '/spots/:spotId/edit',
+            element: <UpdateSpotForm />
+          },
         ]
       }
         

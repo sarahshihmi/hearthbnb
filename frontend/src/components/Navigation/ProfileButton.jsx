@@ -56,6 +56,9 @@ function ProfileButton({ user }) {
             <p>Email: {user.email}</p>
             <hr />
             <NavLink to="/spots/current">Manage Spots</NavLink>
+            
+            <hr />
+            <NavLink to="/reviews/current">Manage Reviews</NavLink>
             <hr />
             <button onClick={logout}>Log Out</button>
           </>

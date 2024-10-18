@@ -1,0 +1,53 @@
+
+.confirm-delete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .confirm-delete-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .confirm-delete-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .delete-button {
+    background-color: #ff5a5f; /* Red color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff787d;
+  }
+  
+  .delete-button:disabled {
+    background-color: #ff5a5f80; /* Semi-transparent red */
+    cursor: not-allowed;
+  }
+  
+  .cancel-button {
+    background-color: #6c757d; /* Dark grey */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cancel-button:hover {
+    background-color: #5a6268;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  

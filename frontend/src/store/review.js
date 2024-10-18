@@ -40,6 +40,16 @@ export const fetchReviews = (spotId) => async (dispatch) => {
   }
 };
 
+// Fetch reviews for the current user
+export const fetchUserReviews = () => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/current`); // Assuming this is the API route for current user's reviews
+  
+    if (response.ok) {
+      const { Reviews } = await response.json();
+      dispatch(loadReviews(Reviews));
+    }
+  };
+  
 // Post a new review
 export const postReview = (spotId, reviewData) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
