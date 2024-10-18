@@ -8,6 +8,7 @@ import SpotsList from './components/Spot/SpotList/SpotList';
 import SpotDetails from './components/Spot/SpotDetails/SpotDetails';
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
+import CreateSpotForm from './components/CreateSpotForm';
 
 
 function Layout() {
@@ -37,7 +38,10 @@ const App = () => {
             path: '/',
             element: <SpotsList />
           },
-          
+          {
+            path: '/spots/new',
+            element: <CreateSpotForm />
+          },
           {
             path: '/spots/:id',
             element: <SpotDetails />

@@ -47,6 +47,24 @@ export const getSpotDetailsById = (spotId) => async (dispatch) => {
     }
   };
 
+  export const createSpot = (spotData) => async (dispatch) => {
+    const res = await csrfFetch('/api/spots', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(spotData),
+    });
+  
+    if (res.ok) {
+      const newSpot = await res.json();
+      dispatch(getSpotDetails(newSpot));
+      return newSpot;
+    } else {
+      const error = await res.json();
+      throw new Error(error.message || 'Failed to create spot');
+    }
+  };
+  
+  
 
 const initialState = {
     spots: [],  // Initial state is an empty array

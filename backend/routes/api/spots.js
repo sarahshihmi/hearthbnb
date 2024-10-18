@@ -475,25 +475,75 @@ router.post(
       name,
       description,
       price,
+      previewImageUrl,
+      imageUrls = []
     } = req.body;
 
-
+    try {
+      // Create the spot
       const spot = await Spot.create({
         ownerId: user.id,
-        address: address,
-        city: city,
-        state: state,
-        country: country,
-        lat: lat,
-        lng: lng,
-        name: name,
-        description: description,
-        price: price,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
       });
 
-      return res.status(201).json(spot)
+      console.log('Spot created:', spot.id);  // Log the newly created spot ID
+
+      // Add the preview image if provided
+      if (previewImageUrl) {
+        try {
+          const previewImage = await SpotImage.create({
+            spotId: spot.id,
+            url: previewImageUrl,
+            preview: true,
+          });
+          console.log('Preview Image created:', previewImage);  // Log the preview image creation
+        } catch (imageError) {
+          console.error('Error creating preview image:', imageError);
+        }
+      }
+
+      // Add additional images if provided
+      for (let url of imageUrls) {
+        if (url) {
+          try {
+            const spotImage = await SpotImage.create({
+              spotId: spot.id,
+              url,
+              preview: false,
+            });
+            console.log('Additional Image created:', spotImage);  // Log the additional image creation
+          } catch (imageError) {
+            console.error('Error creating additional image:', imageError);
+          }
+        }
+      }
+
+      // Fetch the spot details along with images to return to the client
+      const spotWithImages = await Spot.findByPk(spot.id, {
+        include: [
+          {
+            model: SpotImage,
+            attributes: ['id', 'url', 'preview']
+          }
+        ]
+      });
+
+      return res.status(201).json(spotWithImages);
+    } catch (err) {
+      console.error('Error creating spot:', err);
+      return res.status(500).json({ error: 'Internal Server Error', details: err.message });
+    }
   }
 );
+
 
 
 

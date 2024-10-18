@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Spot.belongsTo(models.User, {as: 'Owner', foreignKey: 'ownerId' });
       Spot.hasMany(models.Booking, { foreignKey: 'spotId' });
       Spot.hasMany(models.Review, { foreignKey: 'spotId' });
-      Spot.hasMany(models.SpotImage, { foreignKey: 'spotId' });
+      Spot.hasMany(models.SpotImage, { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: true, });
 
       Spot.addScope('addAllImages', {
         include: [

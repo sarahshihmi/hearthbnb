@@ -1,4 +1,3 @@
-// SpotDetails.jsx
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,8 +6,7 @@ import ReviewsComponent from '../../Review';
 import { getSpotDetailsById } from '../../../store/spot';
 import { fetchReviews } from '../../../store/review';
 import OpenModalButton from '../../OpenModalButton'; 
-import PostReview from '../../Review/PostReview'; 
- 
+import PostReview from '../../Review/PostReview';
 import './SpotDetails.css'; 
 
 const SpotDetails = () => {
@@ -23,6 +21,7 @@ const SpotDetails = () => {
     dispatch(fetchReviews(id));
   }, [dispatch, id]);
 
+  // Add a loading condition if `spot` is not ready yet
   if (!spot || spot.id !== parseInt(id)) {
     return <div>Loading...</div>; 
   }
@@ -33,14 +32,13 @@ const SpotDetails = () => {
     state,
     country,
     description,
-    Owner,
-    SpotImages,
+    Owner = {},  // Ensure `Owner` is always an object, default to an empty object if undefined
+    SpotImages = [],
     price = 'N/A',
-    // avgRating and numReviews are not destructured
   } = spot;
 
-  const largeImage = SpotImages.find(img => img.preview === true) || SpotImages[0];
-  const smallImages = SpotImages.filter(img => !img.preview).slice(0, 4);
+  const largeImage = SpotImages?.find(img => img.preview === true) || SpotImages?.[0];
+  const smallImages = SpotImages ? SpotImages.filter(img => !img.preview).slice(0, 4) : [];
 
   // Compute average rating from reviews
   const sumStars = reviews.reduce((sum, review) => sum + review.stars, 0);
@@ -50,7 +48,8 @@ const SpotDetails = () => {
 
   const numReviews = reviews.length;
 
-  const canPostReview = user && !reviews.some(review => review.userId === user.id) && user.id !== Owner.id;
+  // Ensure `Owner.id` is available before accessing it
+  const canPostReview = user && Owner && Owner.id && !reviews.some(review => review.userId === user.id) && user.id !== Owner.id;
 
   return (
     <div className="spot-details-container">
@@ -76,7 +75,7 @@ const SpotDetails = () => {
       <div className="content-grid">
         <div className="description-section">
           <div className="host-info">
-            <p>Hosted by {Owner.firstName} {Owner.lastName}</p>
+            <p>Hosted by {Owner.firstName || 'Unknown'} {Owner.lastName || 'User'}</p>
           </div>
           <div className="description">
             <p>{description}</p>
@@ -115,7 +114,7 @@ const SpotDetails = () => {
         )}
 
         {/* Display reviews */}
-        <ReviewsComponent reviews={reviews} user={user} isOwner={user?.id === Owner.id} />
+        <ReviewsComponent reviews={reviews} user={user} isOwner={user?.id === Owner?.id} />
       </div>
     </div>
   );
