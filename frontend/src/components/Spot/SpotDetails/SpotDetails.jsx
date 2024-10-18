@@ -7,7 +7,8 @@ import ReviewsComponent from '../../Review';
 import { getSpotDetailsById } from '../../../store/spot';
 import { fetchReviews } from '../../../store/review';
 import OpenModalButton from '../../OpenModalButton'; 
-import PostReview from '../../Review'; 
+import PostReview from '../../Review/PostReview'; 
+ 
 import './SpotDetails.css'; 
 
 const SpotDetails = () => {

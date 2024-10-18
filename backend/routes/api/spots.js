@@ -146,29 +146,61 @@ router.get('/:spotId/reviews', async (req, res) => {
     return res.json({Reviews: reviews})
 })
 
+// backend/routes/api/spots.js
+
 router.post('/:spotId/reviews', restoreUser, requireAuth, ValidateReview, async (req, res) => {
-    const user = req.user;
-    const spotid = parseInt(req.params.spotId)
-    const { review, stars} = req.body;
-    const spot = await Spot.findOne({
-        where: {id: spotid}
-    });
+  try {
+      const user = req.user;
+      const spotId = parseInt(req.params.spotId);
+      const { review, stars } = req.body;
 
-    if(!spot) {return res.status(404).json({message:"Spot couldn't be found"})};
+      // Validate spot existence
+      const spot = await Spot.findOne({ where: { id: spotId } });
+      if (!spot) {
+          return res.status(404).json({ message: "Spot couldn't be found" });
+      }
 
-    const rev = await Review.findOne({
-        where: {userId: user.id}
-    });
-    if(rev) return res.status(500).json({message: 'User already has a review for this spot'});
+      // Check if the user has already reviewed this specific spot
+      const existingReview = await Review.findOne({
+          where: {
+              userId: user.id,
+              spotId: spotId
+          }
+      });
 
-    const newRev = await Review.create({
-        userId: user.id,
-        spotId: spotid,
-        review: review,
-        stars: stars
-    })
-    return res.status(201).json(newRev)
-})
+      if (existingReview) {
+          return res.status(403).json({ message: 'User already has a review for this spot' });
+      }
+
+      // Create the new review
+      const newReview = await Review.create({
+          userId: user.id,
+          spotId: spotId,
+          review: review,
+          stars: stars
+      });
+
+      // Fetch the new review with associated User
+      const reviewWithUser = await Review.findOne({
+          where: { id: newReview.id },
+          include: [{
+              model: User,
+              attributes: ['id', 'firstName', 'lastName']
+          }]
+      });
+
+      return res.status(201).json(reviewWithUser);
+  } catch (error) {
+      console.error("Error posting review:", error);
+      // Handle Sequelize validation errors
+      if (error.name === 'SequelizeValidationError') {
+          const validationErrors = error.errors.map(err => err.message);
+          return res.status(400).json({ message: "Validation error", errors: validationErrors });
+      }
+      return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 
 
 router.get('/current', restoreUser, requireAuth, async(req, res) => {
