@@ -126,7 +126,6 @@ router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
 })
 
 router.get('/current', restoreUser, requireAuth, async (req, res) => {
-  console.log('[Server] Handling request to /spots/current');  // Log to confirm /current is matched
 
   const user = req.user;
 
@@ -134,8 +133,6 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
     const spots = await Spot.scope('addRatings', 'addPreview').findAll({
       where: { ownerId: user.id },
     });
-
-    console.log('[Server] Fetched spots:', spots);
     return res.json({ Spots: spots });
   } catch (error) {
     console.error('Error fetching user spots:', error);
@@ -144,7 +141,6 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
 });
 
 router.get('/:spotId/reviews', async (req, res) => {
-  console.log('[Server] Handling request to /:spotId/reviews');  // Log when reviews route is being called
 
   const spotid = parseInt(req.params.spotId);
   const spot = await Spot.findOne({ where: { id: spotid } });
@@ -506,7 +502,6 @@ router.post(
         price,
       });
 
-      console.log('Spot created:', spot.id);  // Log the newly created spot ID
 
       // Add the preview image if provided
       if (previewImageUrl) {
@@ -516,7 +511,6 @@ router.post(
             url: previewImageUrl,
             preview: true,
           });
-          console.log('Preview Image created:', previewImage);  // Log the preview image creation
         } catch (imageError) {
           console.error('Error creating preview image:', imageError);
         }
@@ -531,7 +525,6 @@ router.post(
               url,
               preview: false,
             });
-            console.log('Additional Image created:', spotImage);  // Log the additional image creation
           } catch (imageError) {
             console.error('Error creating additional image:', imageError);
           }

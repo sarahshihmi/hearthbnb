@@ -12,9 +12,8 @@ const ManageSpots = () => {
 
   useEffect(() => {
     if (user) {
-        console.log('before fetchuserspots woooooooooot')
       dispatch(fetchUserSpots());
-      console.log('after fetchuserspots woooooooooot')
+
     }
   }, [dispatch, user]);
 
