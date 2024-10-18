@@ -80,30 +80,50 @@ router.post('/:reviewId/images', restoreUser, requireAuth, async(req, res) => {
         return res.status(201).json(newImage);
 })
 
-
-router.put('/:reviewId',restoreUser, requireAuth, validateReview, async(req, res) => {
-    const reviewId  = parseInt(req.params.reviewId);
+router.put('/:reviewId', restoreUser, requireAuth, validateReview, async (req, res) => {
+  try {
+    const reviewId = parseInt(req.params.reviewId, 10);
     const user = req.user;
-    const revEdit = await Review.findOne({where: reviewId});
-    const {review, stars} = req.body;
+    const { review, stars } = req.body;
 
-    if (!revEdit) {
-        return res.status(404).json({
-          message: "Review couldn't be found",
-        });
-    }
-    if (revEdit.userId !== user.id) {
-        return res.status(403).json({
-          message: 'Forbidden',
-        });
-    };
-    await revEdit.update({
-        review: review,
-        stars: stars
+    const existingReview = await Review.findOne({
+      where: { id: reviewId },
+      include: [{
+        model: User,
+        attributes: ['id', 'firstName', 'lastName'],
+      }],
     });
-  
-    return res.json(revEdit);
-})
+
+    if (!existingReview) {
+      return res.status(404).json({
+        message: "Review couldn't be found",
+      });
+    }
+
+    if (existingReview.userId !== user.id) {
+      return res.status(403).json({
+        message: 'Forbidden',
+      });
+    }
+
+    existingReview.review = review;
+    existingReview.stars = stars;
+    await existingReview.save();
+
+    const updatedReview = await Review.findOne({
+      where: { id: reviewId },
+      include: [{
+        model: User,
+        attributes: ['id', 'firstName', 'lastName'],
+      }],
+    });
+
+    return res.json(updatedReview);
+  } catch (error) {
+    console.error("Error updating review:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
   
 router.delete('/:reviewId',restoreUser, requireAuth, async(req, res)=> {
     const reviewId = parseInt(req.params.reviewId);

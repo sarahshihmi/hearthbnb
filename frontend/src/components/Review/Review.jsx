@@ -1,11 +1,11 @@
 // frontend/src/components/Review/Review.jsx
 import './Review.css';
-import { useDispatch } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'; 
-import ConfirmDelete from './ConfirmDelete'; // Ensure correct path
+import ConfirmDelete from './ConfirmDelete';
+import UpdateReview from './UpdateReview';
 
 const ReviewsComponent = ({ reviews = [], user, isOwner, spotId }) => { // Default to empty array
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const formatReviewDate = (dateString) => {
     const date = new Date(dateString);
@@ -21,17 +21,26 @@ const ReviewsComponent = ({ reviews = [], user, isOwner, spotId }) => { // Defau
           {reviews.map(review => (
             <li key={review.id} className="review-item">
               <div className="review-header">
-                <strong>{review.User.firstName}</strong>
+                <strong>{review.User ? review.User.firstName : 'Unknown User'}</strong>
                 <span>{formatReviewDate(review.createdAt)}</span>
               </div>
               <p>{review.review}</p>
 
-              {/* Show delete button for reviews posted by the logged-in user */}
+              {/* Show Update and Delete buttons for reviews posted by the logged-in user */}
               {user?.id === review.userId && (
                 <div className="review-actions">
+                  {/* Update Button */}
+                  <OpenModalButton 
+                    buttonText="Update"
+                    modalComponent={<UpdateReview review={review} spotId={spotId} />}
+                    buttonClass="small-button update-button" // Add classes for styling
+                  />
+
+                  {/* Delete Button */}
                   <OpenModalButton 
                     buttonText="Delete"
                     modalComponent={<ConfirmDelete reviewId={review.id} />}
+                    buttonClass="small-button delete-button" // Add classes for styling
                   />
                 </div>
               )}

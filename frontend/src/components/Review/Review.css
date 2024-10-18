@@ -27,6 +27,7 @@
   margin-top: 10px;
 }
 
+/* Existing Delete Button Styles (if still used elsewhere) */
 .open-modal-button {
   background-color: #ff5a5f; /* Red color */
   color: white;
@@ -38,6 +39,44 @@
 
 .open-modal-button:hover {
   background-color: #ff787d;
+}
+
+/* Updated Small Button Base Class */
+.small-button {
+  padding: 4px 8px; /* Smaller padding to make the buttons compact */
+  font-size: 0.75em; /* Smaller font size for compact buttons */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px; /* Spacing between buttons */
+}
+
+/* Update Button Styles */
+.update-button {
+  background-color: #ffc107; /* Yellow color for Update */
+  color: white;
+}
+
+.update-button:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
+}
+
+/* Delete Button Styles */
+.delete-button {
+  background-color: #ff5a5f; /* Red color for Delete */
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #ff787d; /* Darker red on hover */
+}
+
+/* Specific Review Actions Button Styles */
+.review-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px; /* Ensure proper spacing between buttons */
 }
 
 .no-reviews-message {

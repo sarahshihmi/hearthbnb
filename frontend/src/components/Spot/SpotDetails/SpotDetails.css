@@ -45,10 +45,10 @@
   border-top: 1px solid #ddd;
 }
 
-/* Grid layout for description and booking */
+/* Content Grid */
 .content-grid {
   display: grid;
-  grid-template-columns: 65% 30%; /* 65% for description, 30% for booking */
+  grid-template-columns: 65% 30%; /* Adjust columns if necessary */
   gap: 20px;
 }
 
@@ -89,8 +89,14 @@
 }
 
 /* Reviews heading */
-.reviews-component {
+/* Reviews Section */
+.reviews-section {
   margin-top: 30px;
+}
+
+/* Ensure the buttons in reviews-section are not overridden by other styles */
+.reviews-section .review-actions button {
+  width: auto; /* Ensure buttons are appropriately sized */
 }
 
 .reviews-heading {

@@ -5,21 +5,27 @@ import { csrfFetch } from './csrf';
 const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
 const ADD_REVIEW = 'reviews/ADD_REVIEW';
 const REMOVE_REVIEW = 'reviews/REMOVE_REVIEW';
+const UPDATE_REVIEW = 'reviews/UPDATE_REVIEWS'; // New Action Type
 
 // Action Creators
 const loadReviews = (reviews) => ({
   type: LOAD_REVIEWS,
-  reviews
+  reviews,
 });
 
 const addReview = (review) => ({
   type: ADD_REVIEW,
-  review
+  review,
 });
 
 const removeReview = (reviewId) => ({
   type: REMOVE_REVIEW,
-  reviewId
+  reviewId,
+});
+
+const updateReviewAction = (review) => ({ // New Action Creator
+  type: UPDATE_REVIEW,
+  review,
 });
 
 // Thunk Action Creators
@@ -38,7 +44,8 @@ export const fetchReviews = (spotId) => async (dispatch) => {
 export const postReview = (spotId, reviewData) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
     method: 'POST',
-    body: JSON.stringify(reviewData)
+    headers: { 'Content-Type': 'application/json' }, // Ensure headers are set
+    body: JSON.stringify(reviewData),
   });
 
   if (response.ok) {
@@ -50,11 +57,33 @@ export const postReview = (spotId, reviewData) => async (dispatch) => {
 // Delete a review
 export const deleteReview = (reviewId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-    method: 'DELETE'
+    method: 'DELETE',
   });
 
   if (response.ok) {
     dispatch(removeReview(reviewId));
+  }
+};
+
+// **New Thunk for Updating a Review**
+export const updateReview = (reviewId, reviewData) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' }, // Ensure headers are set
+    body: JSON.stringify(reviewData),
+  });
+
+  if (response.ok) {
+    const updatedReview = await response.json();
+    dispatch(updateReviewAction(updatedReview));
+    return updatedReview; // Optional: Return updated review for further use
+  } else {
+    const errorData = await response.json();
+    if (errorData.message) {
+      throw new Error(errorData.message);
+    } else {
+      throw new Error('Failed to update review');
+    }
   }
 };
 
@@ -69,6 +98,13 @@ const reviewsReducer = (state = initialState, action) => {
       return { ...state, reviews: [action.review, ...state.reviews] };
     case REMOVE_REVIEW:
       return { ...state, reviews: state.reviews.filter(review => review.id !== action.reviewId) };
+    case UPDATE_REVIEW: // New Reducer Case
+      return {
+        ...state,
+        reviews: state.reviews.map(review =>
+          review.id === action.review.id ? action.review : review
+        ),
+      };
     default:
       return state;
   }
