@@ -12,22 +12,22 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: 'https://wowpedia.fandom.com/wiki/Gilded_Rose?file=The_Gilded_Rose.jpg',
+        url: 'https://i.imgur.com/zIG6lIa.jpeg',
         preview: true
       },
       {
         spotId: 1,
-        url: 'https://wowpedia.fandom.com/wiki/Gilded_Rose?file=The_Gilded_Rose_%28interior%29.jpg',
+        url: 'https://i.imgur.com/ZctUPu1.png',
         preview: false
       },
       {
         spotId: 1,
-        url: 'https://wowpedia.fandom.com/wiki/Gilded_Rose?file=WorldMap-StormwindCity.jpg',
+        url: 'https://i.imgur.com/XP7YtT7.png',
         preview: false
       },
       {
         spotId: 1,
-        url: 'https://static.wikia.nocookie.net/wowpedia/images/5/5a/Old_Town.jpg/revision/latest/smart/width/386/height/259?cb=20230517145829',
+        url: 'https://i.imgur.com/1H9MWKr.png',
         preview: false
       },
       {

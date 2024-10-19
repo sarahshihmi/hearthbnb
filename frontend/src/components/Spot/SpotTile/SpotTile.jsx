@@ -10,13 +10,13 @@ const SpotTile = ({ spot }) => {
     navigate(`/spots/${spot.id}`);
   
   };
+  console.log(`Spot ID: ${spot.id}, Preview Image: ${spot.previewImage}`);
 
   return (
     <div className="spot-tile" 
     onClick={handleTileClick} 
     data-tooltip={spot.name}
     >
-
     {spot.previewImage ? (
         <img src={spot.previewImage} alt={spot.name} className="spot-image" />
     ) : (
