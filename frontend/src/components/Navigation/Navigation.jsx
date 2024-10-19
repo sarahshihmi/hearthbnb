@@ -10,7 +10,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <nav className="navbar">
-      <div className="nav-logo">
+      <div className="nav-logo" data-testid='logo'>
         <NavLink to="/">
           <img
               src={hearthbnblogo}
