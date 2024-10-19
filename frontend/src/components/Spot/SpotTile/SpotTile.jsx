@@ -8,10 +8,15 @@ const SpotTile = ({ spot }) => {
 
   const handleTileClick = () => {
     navigate(`/spots/${spot.id}`);
+  
   };
 
   return (
-    <div className="spot-tile" onClick={handleTileClick}>
+    <div className="spot-tile" 
+    onClick={handleTileClick} 
+    data-tooltip={spot.name}
+    >
+
     {spot.previewImage ? (
         <img src={spot.previewImage} alt={spot.name} className="spot-image" />
     ) : (
@@ -23,7 +28,8 @@ const SpotTile = ({ spot }) => {
             <p className="spot-location-small">{`${spot.city}, ${spot.state}`}</p>
             <div className="spot-rating">
                 <FaStar className="star-icon" /> 
-                {spot.rating ? spot.rating.toFixed(1) : 'New'}
+                {spot.avgRating ? parseFloat(spot.avgRating).toFixed(1) : 'New'}
+
             </div>
         </div>
         <div className="spot-price">${spot.price} night</div>

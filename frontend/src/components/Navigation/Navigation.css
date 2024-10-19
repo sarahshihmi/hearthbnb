@@ -26,13 +26,6 @@ ul li {
     position: relative;
 }
   
-.nav-logo a {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid black;
-}
 
 /* Styles for the right side of the nav (profile button and new spot link) */
 .nav-right {

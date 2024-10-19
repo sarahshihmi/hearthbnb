@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import hearthbnblogo from '../../assets/hearthbnblogo.png'
 
 function Navigation({ isLoaded }) {
   // Get the session user from the Redux store
@@ -10,7 +11,13 @@ function Navigation({ isLoaded }) {
   return (
     <nav className="navbar">
       <div className="nav-logo">
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/">
+          <img
+              src={hearthbnblogo}
+              alt="Home Logo"
+              className="nav-logo-icon"
+            />
+        </NavLink>
       </div>
 
       {isLoaded && (

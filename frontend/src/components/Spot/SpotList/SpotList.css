@@ -39,7 +39,6 @@
     transform: scale(1.05);  /* Slight scale on hover */
   }
   
-  /* Tooltip Styling */
   .spot-tile::after {
     content: attr(data-tooltip);  /* Get tooltip text from data attribute */
     position: absolute;
