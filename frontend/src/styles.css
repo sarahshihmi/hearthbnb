@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'AlbertusMTStd';
+    src: url('/fonts/AlbertusMTStd.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    font-family: 'AlbertusMTStd', sans-serif;
+    background-color: #181818;
+}

@@ -8,11 +8,13 @@
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 10px;
+  color:#ffffff
 }
 
 .spot-location {
   font-size: 18px;
   margin-bottom: 20px;
+  color:#ffffff
 }
 
 /* Grid layout for images */
@@ -56,6 +58,7 @@
   display: flex;
   flex-direction
   : column;
+  color:#ffffff
 }
 
 .booking-section {
@@ -69,7 +72,7 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: #242424;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -102,16 +105,21 @@
 .reviews-heading {
   font-size: 24px;
   margin-bottom: 10px;
+  color:#ffffff
 }
 
 .reviews-list {
   list-style: none;
   padding: 0;
+  color:#ffffff
 }
+
+
 
 .review-item {
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
+  color:#ffffff
 }
 
 .review-item:last-child {
@@ -121,14 +129,16 @@
 .review-header {
   font-weight: bold;
   margin-bottom: 5px;
+  color:#ffffff;
 }
 
 .review-header span {
   font-weight: normal;
-  color: #666;
+  color: #ffffff;
+
 }
 
 .review-header .dot {
   margin: 0 5px;
-  color: #666;
+  color: #ffffff;
 }

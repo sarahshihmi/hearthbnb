@@ -6,8 +6,8 @@
   }
   
   .create-spot-link {
-    background-color: #007bff;
-    color: white;
+    background-color: #f2a21b;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -16,7 +16,8 @@
   }
   
   .create-spot-link:hover {
-    background-color: #0056b3;
+    background-color: #cc8915;
+    color:black
   }
   
   /* Manage Spots Grid */

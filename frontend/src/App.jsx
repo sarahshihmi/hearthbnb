@@ -11,6 +11,8 @@ import * as sessionActions from './store/session';
 import CreateSpotForm from './components/CreateSpotForm';
 import ManageSpots from './components/ManageSpots';
 import UpdateSpotForm from './components/UpdateSpotForm';
+import './styles.css';
+
 
 
 function Layout() {

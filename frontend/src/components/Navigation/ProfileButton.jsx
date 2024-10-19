@@ -6,6 +6,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink, useNavigate } from "react-router-dom";
+//import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -57,9 +58,6 @@ function ProfileButton({ user }) {
             <hr />
             <NavLink to="/spots/current">Manage Spots</NavLink>
             
-            <hr />
-            <NavLink to="/reviews/current">Manage Reviews</NavLink>
-            <hr />
             <button onClick={logout}>Log Out</button>
           </>
         ) : (
