@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'AlbertusMTStd';
-    src: url('/fonts/AlbertusMTStd.otf') format('opentype');
+    src: url('../public/fonts/AlbertusMTStd.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
