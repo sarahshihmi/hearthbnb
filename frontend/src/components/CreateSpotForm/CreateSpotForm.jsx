@@ -154,7 +154,7 @@ const CreateSpotForm = () => {
         {/* Title Section */}
         <hr className="separator" />
         <h2>Create a title for your spot</h2>
-        <p>Catch guests' attention with a spot title that highlights what makes
+        <p>Catch guests attention with a spot title that highlights what makes
         your place special.</p>
         {errors.name && <span className="error-message">{errors.name}</span>}
         <input name="name" placeholder="Name of your spot" value={form.name} onChange={handleInputChange} />

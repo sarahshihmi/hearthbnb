@@ -52,7 +52,7 @@ const SpotDetails = () => {
   const canPostReview = user && Owner && Owner.id && !reviews.some(review => review.userId === user.id) && user.id !== Owner.id;
 
   return (
-    <div className="spot-details-container">
+    <div className="spot-details-container" data-testid='spot-tile'>
       <h1 className="spot-name">{name}</h1>
       <p className="spot-location">{city}, {state}, {country}</p>
       
@@ -83,7 +83,7 @@ const SpotDetails = () => {
         </div>
 
         {/* Booking Module */}
-        <div className="booking-section">
+        <div className="booking-section" data-testid='spot-callout-box'>
           <BookingComponent
             price={price}
             avgRating={avgRatingDisplay}  
