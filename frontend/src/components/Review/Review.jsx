@@ -17,14 +17,14 @@ const ReviewsComponent = ({ reviews = [], user, isOwner, spotId }) => { // Defau
     <div className="reviews-component">
       {/* Display reviews */}
       {reviews.length > 0 ? (
-        <ul className="reviews-list">
+        <ul className="reviews-list" data-testid='review-list'>
           {reviews.map(review => (
-            <li key={review.id} className="review-item">
+            <li key={review.id} className="review-item" data-testid='review-item'>
               <div className="review-header">
                 <strong>{review.User ? review.User.firstName : 'Unknown User'}</strong>
-                <span>{formatReviewDate(review.createdAt)}</span>
+                <span data-testid='review-date'>{formatReviewDate(review.createdAt)}</span>
               </div>
-              <p>{review.review}</p>
+              <p data-testid='review-text'>{review.review}</p>
 
               {/* Show Update and Delete buttons for reviews posted by the logged-in user */}
               {user?.id === review.userId && (

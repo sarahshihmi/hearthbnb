@@ -105,8 +105,8 @@ const CreateSpotForm = () => {
   };
 
   return (
-    <div className="create-spot-form-container">
-      <h1>Create a New Spot</h1>
+    <div className="create-spot-form-container" data-testid='create-spot-form'>
+      <h1 data-testid='form-title'>Create a New Spot</h1>
       <form onSubmit={handleSubmit}>
         {/* Location Section */}
         <hr className="separator" />

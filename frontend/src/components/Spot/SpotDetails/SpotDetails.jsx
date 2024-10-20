@@ -53,17 +53,17 @@ const SpotDetails = () => {
 
   return (
     <div className="spot-details-container" data-testid='spot-tile'>
-      <h1 className="spot-name">{name}</h1>
-      <p className="spot-location">{city}, {state}, {country}</p>
+      <h1 className="spot-name" data-testid='spot-name'>{name}</h1>
+      <p className="spot-location"data-testid='spot-location'>{city}, {state}, {country}</p>
       
       {/* Grid layout for images */}
       <div className="images-section">
         {largeImage && (
-          <img src={largeImage.url} alt={`${name} Preview`} className="large-image" />
+          <img src={largeImage.url} alt={`${name} Preview`} className="large-image" data-testid='spot-large-image' />
         )}
         <div className="small-images">
           {smallImages.map(img => (
-            <img key={img.id} src={img.url} alt={`${name} Image ${img.id}`} className="small-image" />
+            <img key={img.id} src={img.url} alt={`${name} Image ${img.id}`} className="small-image" data-testid='spot-small-image' />
           ))}
         </div>
       </div>
@@ -74,10 +74,10 @@ const SpotDetails = () => {
       {/* Description and Booking side by side */}
       <div className="content-grid">
         <div className="description-section">
-          <div className="host-info">
+          <div className="host-info" data-testid='spot-host'>
             <p>Hosted by {Owner.firstName || 'Unknown'} {Owner.lastName || 'User'}</p>
           </div>
-          <div className="description">
+          <div className="description" data-testid='spot-description'>
             <p>{description}</p>
           </div>
         </div>
@@ -96,12 +96,12 @@ const SpotDetails = () => {
       <hr className="separator" />
 
       <div className="reviews-section">
-        <h2 className="reviews-heading">
+        <h2 className="reviews-heading" data-testid='reviews-heading'>
           <span className="star-icon">★</span> {avgRatingDisplay} 
           {numReviews > 0 && (
             <>
               <span className="dot"> · </span>
-              <span>{numReviews} {numReviews === 1 ? 'Review' : 'Reviews'}</span>
+              <span data-testid='review-count'>{numReviews} {numReviews === 1 ? 'Review' : 'Reviews'}</span>
             </>
           )}
         </h2>
@@ -109,7 +109,8 @@ const SpotDetails = () => {
         {canPostReview && (
           <OpenModalButton 
             buttonText="Post Your Review" 
-            modalComponent={<PostReview spotId={id} />}
+            modalComponent={<PostReview spotId={id} 
+            data-testid='review-form'/>}
           />
         )}
 

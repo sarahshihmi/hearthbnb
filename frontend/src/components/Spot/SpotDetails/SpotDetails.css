@@ -58,7 +58,8 @@
   display: flex;
   flex-direction
   : column;
-  color:#ffffff
+  color:#ffffff;
+  word-break:break-word;
 }
 
 .booking-section {
@@ -142,3 +143,4 @@
   margin: 0 5px;
   color: #ffffff;
 }
+
