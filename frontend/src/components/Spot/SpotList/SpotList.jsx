@@ -13,7 +13,7 @@ const SpotList = () => {
   }, [dispatch]);
 
   return (
-    <div className="spots-container">
+    <div className="spots-container" data-testid='spots-list'>
     {spots && spots.length > 0 ? (
       spots.map(spot => (
         <SpotTile key={spot.id} spot={spot} />

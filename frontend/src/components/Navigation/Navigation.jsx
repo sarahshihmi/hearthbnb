@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
         <div className="nav-right">
           {/* Show "Create a New Spot" link only if the user is logged in */}
           {sessionUser && (
-            <NavLink to="/spots/new" className="create-spot-link">
+            <NavLink to="/spots/new" className="create-spot-link" data-testid='create-new-spot-button'>
               Create a New Spot
             </NavLink>
           )}

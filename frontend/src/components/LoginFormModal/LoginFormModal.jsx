@@ -48,6 +48,7 @@ function LoginFormModal() {
 };
   return (
     <>
+    <div data-testid="login-modal">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -57,6 +58,7 @@ function LoginFormModal() {
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
+            data-testid = 'credential-input'
           />
         </label>
         <label>
@@ -66,16 +68,18 @@ function LoginFormModal() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            data-testid='password-input'
           />
         </label>
         {errors.credential && (
           <p>{errors.credential}</p>
         )}
-        <button type="submit" disabled={isButtonDisabled}>Log In</button>
+        <button type="submit" disabled={isButtonDisabled} data-testid='login-button'>Log In</button>
       </form>  
-      <button className="demo-user-button" onClick={handleDemoUserLogin}>
+      <button className="demo-user-button" onClick={handleDemoUserLogin} data-testid='demo-user-login'>
         Log in as Demo User
       </button>
+    </div>
     </>
   );
 }

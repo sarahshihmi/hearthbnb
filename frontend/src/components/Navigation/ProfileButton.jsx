@@ -47,10 +47,10 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <h2 onClick={toggleMenu}>
+      <h2 onClick={toggleMenu} data-testid="user-menu-button">
         <FaUserCircle />
       </h2>
-      <div className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef} data-testid="user-dropdown-menu">
         {user ? (
           <>
             <p>Hello, {user.firstName}</p>

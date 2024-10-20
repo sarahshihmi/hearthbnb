@@ -225,6 +225,7 @@ module.exports = (sequelize, DataTypes) => {
                         FROM "SpotImages" AS image
                         WHERE
                             image.preview = true
+                          AND image."spotId" = "Spot"."id"
                         LIMIT 1)`),
                             'previewImage',
               ],

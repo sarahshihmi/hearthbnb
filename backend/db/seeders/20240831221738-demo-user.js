@@ -494,7 +494,14 @@ module.exports = {
         firstName: 'Amisi',
         lastName: 'Azuregaze',
         hashedPassword: bcrypt.hashSync('halfhill1!')
-      }
+      },
+      {
+        email: 'demo@user.io',
+        username: 'Demo-lition',
+        firstName: 'Sarah',
+        lastName: 'Milinovich',
+        hashedPassword: bcrypt.hashSync('password')
+      },
     ], { validate: true });
   },
 
@@ -571,6 +578,7 @@ module.exports = {
         'username64',
         'username65',
         'username66',
+        'Demo-lition'
       ] }
     }, {});
   }

@@ -60,7 +60,7 @@ function SignupFormModal() {
   }, [email, username, firstName, lastName, password, confirmPassword]);
 
   return (
-    <div className="signup">
+    <div className="signup" data-testid='sign-up-form'>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit} className="signup-form">
         <input
@@ -69,22 +69,25 @@ function SignupFormModal() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          data-testid='email-input'
         />
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p data-testid='email-error-message'>{errors.email}</p>}
         <input
           placeholder="Username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          data-testid='username-input'
         />
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && <p data-testid='username-error-message'>{errors.username}</p>}
         <input
           placeholder="First Name"
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
+          data-testid='first-name-input'
         />
         {errors.firstName && <p>{errors.firstName}</p>}
         <input
@@ -93,6 +96,7 @@ function SignupFormModal() {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
+          data-testid='last-name-input'
         />
         {errors.lastName && <p>{errors.lastName}</p>}
         <input
@@ -101,6 +105,7 @@ function SignupFormModal() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          data-testid='password-input'
         />
         {errors.password && <p>{errors.password}</p>}
         <input
@@ -109,11 +114,12 @@ function SignupFormModal() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          data-testid='confirm-password-input'
         />
         {errors.confirmPassword && (
           <p className="error">{errors.confirmPassword}</p>
         )}
-        <button type="submit" disabled={disabled}>
+        <button type="submit" disabled={disabled} data-testid='form-sign-up-button'>
           Sign Up
         </button>
       </form>
