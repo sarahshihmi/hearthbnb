@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateReview } from '../../store/review'; // Ensure this path is correct
-import { useModal } from '../../context/Modal'; // Adjust the path based on your project structure
-import './UpdateReview.css'; // Optional: for styling
+import { updateReview } from '../../store/review'; 
+import { useModal } from '../../context/Modal';
+import './UpdateReview.css'; 
 
-const UpdateReview = ({ review }) => { // Accept spotName as a prop
+const UpdateReview = ({ review }) => { 
     const dispatch = useDispatch();
-    const { closeModal } = useModal(); // Access closeModal from context
+    const { closeModal } = useModal(); 
     const [editedReview, setEditedReview] = useState(review.review);
     const [stars, setStars] = useState(review.stars);
     const [errors, setErrors] = useState({});
@@ -14,7 +14,7 @@ const UpdateReview = ({ review }) => { // Accept spotName as a prop
     const handleSubmit = async (e) => {
       e.preventDefault();
   
-      // Frontend Validation
+
       const newErrors = {};
       if (editedReview.length < 10) {
         newErrors.review = 'Review must be at least 10 characters long.';
@@ -30,7 +30,7 @@ const UpdateReview = ({ review }) => { // Accept spotName as a prop
   
       try {
         await dispatch(updateReview(review.id, { review: editedReview, stars }));
-        closeModal(); // Close the modal after successful update
+        closeModal();
       } catch (err) {
         if (err.message) {
           setErrors({ backend: err.message });
@@ -40,7 +40,7 @@ const UpdateReview = ({ review }) => { // Accept spotName as a prop
       }
     };
 
-    // Helper function to handle star click
+
     const handleStarClick = (rating) => {
       setStars(rating);
     };

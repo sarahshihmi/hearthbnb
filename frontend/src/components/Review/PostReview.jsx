@@ -30,7 +30,7 @@ const PostReview = ({ spotId }) => {
       });
   };
 
-  // Helper function to handle star click
+
   const handleStarClick = (rating) => {
     setStars(rating);
   };

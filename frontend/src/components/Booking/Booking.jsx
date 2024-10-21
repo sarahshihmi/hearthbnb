@@ -13,7 +13,7 @@ const BookingComponent = ({ price, avgRating, reviewCount }) => {
           <span className="price">${price}</span> night
         </div>
         <div className="review-summary" data-testid='spot-rating'>
-          ★ {avgRating}  {/* avgRating is already formatted */}
+          ★ {avgRating}
           {reviewCount > 0 && (
             <>
               <span className="dot"> · </span>

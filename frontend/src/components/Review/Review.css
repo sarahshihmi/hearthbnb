@@ -1,5 +1,3 @@
-/* frontend/src/components/Review/Review.css */
-
 .reviews-component {
   margin-top: 30px;
 }
@@ -7,11 +5,11 @@
 .reviews-list {
   list-style: none;
   padding: 0;
-  display: block; /* Ensure block display */
+  display: block;
 }
 
 .review-item {
-  display: block; /* Ensure each review stacks vertically */
+  display: block; 
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
 }
@@ -20,16 +18,16 @@
   font-weight: bold;
   margin-bottom: 5px;
   display: flex;
-  justify-content: space-between; /* Align name and date on opposite ends */
+  justify-content: space-between; 
 }
 
 .review-actions {
   margin-top: 10px;
 }
 
-/* Existing Delete Button Styles (if still used elsewhere) */
+
 .open-modal-button {
-  background-color: #ff5a5f; /* Red color */
+  background-color: #ff5a5f;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -41,42 +39,42 @@
   background-color: #ff787d;
 }
 
-/* Updated Small Button Base Class */
+
 .small-button {
-  padding: 4px 8px; /* Smaller padding to make the buttons compact */
-  font-size: 0.75em; /* Smaller font size for compact buttons */
+  padding: 4px 8px;
+  font-size: 0.75em;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   display: inline-block;
-  margin-right: 5px; /* Spacing between buttons */
+  margin-right: 5px; 
 }
 
-/* Update Button Styles */
+
 .update-button {
-  background-color: #ffc107; /* Yellow color for Update */
+  background-color: #ffc107;
   color: white;
 }
 
 .update-button:hover {
-  background-color: #e0a800; /* Darker yellow on hover */
+  background-color: #e0a800;
 }
 
-/* Delete Button Styles */
+
 .delete-button {
-  background-color: #ff5a5f; /* Red color for Delete */
+  background-color: #ff5a5f;
   color: white;
 }
 
 .delete-button:hover {
-  background-color: #ff787d; /* Darker red on hover */
+  background-color: #ff787d;
 }
 
-/* Specific Review Actions Button Styles */
+
 .review-actions {
   margin-top: 10px;
   display: flex;
-  gap: 5px; /* Ensure proper spacing between buttons */
+  gap: 5px; 
 }
 
 .no-reviews-message {

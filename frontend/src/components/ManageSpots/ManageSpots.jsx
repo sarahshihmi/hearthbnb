@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import { fetchUserSpots } from '../../store/spot';
 import './ManageSpots.css';
 import '../Spot/SpotTile/SpotTile.css';
@@ -10,7 +10,7 @@ import ConfirmDeleteSpot from '../Spot/ConfirmDeleteSpot';
 
 const ManageSpots = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate(); 
   const userSpots = useSelector(state => state.spots.userSpots);
   const user = useSelector(state => state.session?.user);
 
@@ -25,7 +25,7 @@ const ManageSpots = () => {
   };
 
   const handleTileClick = (spotId) => {
-    navigate(`/spots/${spotId}`); // Navigate to the spot details page
+    navigate(`/spots/${spotId}`); 
   };
 
   if (!userSpots.length) {
@@ -51,7 +51,7 @@ const ManageSpots = () => {
             className="spot-tile"
             key={spot.id}
             data-tooltip={spot.name}
-            onClick={() => handleTileClick(spot.id)} // Add click handler here
+            onClick={() => handleTileClick(spot.id)} 
           >
             {spot.previewImage ? (
               <img src={spot.previewImage} alt={spot.name} className="spot-image" />
@@ -69,14 +69,14 @@ const ManageSpots = () => {
             </div>
             <div className="spot-actions">
               <button onClick={(e) => {
-                e.stopPropagation(); // Prevent navigating when clicking on update button
+                e.stopPropagation(); 
                 handleUpdateClick(spot.id);
               }} className="update-button">Update</button>
               <OpenModalButton
                 buttonText="Delete"
                 modalComponent={<ConfirmDeleteSpot spotId={spot.id} />}
                 className="delete-button"
-                onClick={(e) => e.stopPropagation()} // Prevent navigating when clicking on delete button
+                onClick={(e) => e.stopPropagation()} 
               />
             </div>
           </div>

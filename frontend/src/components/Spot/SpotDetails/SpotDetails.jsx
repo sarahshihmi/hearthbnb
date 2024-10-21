@@ -21,7 +21,7 @@ const SpotDetails = () => {
     dispatch(fetchReviews(id));
   }, [dispatch, id]);
 
-  // Add a loading condition if `spot` is not ready yet
+
   if (!spot || spot.id !== parseInt(id)) {
     return <div>Loading...</div>; 
   }
@@ -32,7 +32,7 @@ const SpotDetails = () => {
     state,
     country,
     description,
-    Owner = {},  // Ensure `Owner` is always an object, default to an empty object if undefined
+    Owner = {}, 
     SpotImages = [],
     price = 'N/A',
   } = spot;
@@ -40,7 +40,7 @@ const SpotDetails = () => {
   const largeImage = SpotImages?.find(img => img.preview === true) || SpotImages?.[0];
   const smallImages = SpotImages ? SpotImages.filter(img => !img.preview).slice(0, 4) : [];
 
-  // Compute average rating from reviews
+
   const sumStars = reviews.reduce((sum, review) => sum + review.stars, 0);
   const avgRatingDisplay = reviews.length > 0 
     ? (sumStars / reviews.length).toFixed(1) 
@@ -48,7 +48,7 @@ const SpotDetails = () => {
 
   const numReviews = reviews.length;
 
-  // Ensure `Owner.id` is available before accessing it
+
   const canPostReview = user && Owner && Owner.id && !reviews.some(review => review.userId === user.id) && user.id !== Owner.id;
 
   return (
@@ -56,7 +56,7 @@ const SpotDetails = () => {
       <h1 className="spot-name" data-testid='spot-name'>{name}</h1>
       <p className="spot-location"data-testid='spot-location'>{city}, {state}, {country}</p>
       
-      {/* Grid layout for images */}
+
       <div className="images-section">
         {largeImage && (
           <img src={largeImage.url} alt={`${name} Preview`} className="large-image" data-testid='spot-large-image' />
@@ -68,10 +68,10 @@ const SpotDetails = () => {
         </div>
       </div>
 
-      {/* Separator Line */}
+
       <hr className="separator" />
 
-      {/* Description and Booking side by side */}
+
       <div className="content-grid">
         <div className="description-section">
           <div className="host-info" data-testid='spot-host'>
@@ -82,7 +82,7 @@ const SpotDetails = () => {
           </div>
         </div>
 
-        {/* Booking Module */}
+
         <div className="booking-section" data-testid='spot-callout-box'>
           <BookingComponent
             price={price}
@@ -92,7 +92,7 @@ const SpotDetails = () => {
         </div>
       </div>
 
-      {/* Separator Line */}
+
       <hr className="separator" />
 
       <div className="reviews-section">
@@ -114,7 +114,7 @@ const SpotDetails = () => {
           />
         )}
 
-        {/* Display reviews */}
+
         <ReviewsComponent reviews={reviews} user={user} isOwner={user?.id === Owner?.id} />
       </div>
     </div>

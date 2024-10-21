@@ -1,5 +1,3 @@
-/* LoginForm.css */
-
 form {
     display: flex;
     flex-direction: column;
@@ -7,14 +5,14 @@ form {
     justify-content: center;
     padding: 20px;
     width: 100%;
-    max-width: 400px;  /* Added max-width to prevent overflow */
-    box-sizing: border-box;  /* Ensures padding doesn't add to the width */
+    max-width: 400px;  
+    box-sizing: border-box;  
   }
   
   form h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    text-align: center;  /* Center the title */
+    text-align: center;  
   }
   
   form label {
@@ -22,7 +20,7 @@ form {
     margin-bottom: 10px;
     font-weight: bold;
     width: 100%;
-    max-width: 100%;  /* Ensure label stretches properly */
+    max-width: 100%; 
     text-align: left;
   }
   
@@ -33,7 +31,7 @@ form {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box;  /* Ensure padding doesn't affect width */
+    box-sizing: border-box;  
   }
   
   button {
@@ -65,7 +63,6 @@ form {
     text-align: center;
   }
   
-  /* Ensure modal content is responsive */
   .modal-content {
     width: 100%;
     max-width: 400px;

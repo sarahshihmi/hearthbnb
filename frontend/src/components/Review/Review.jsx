@@ -1,11 +1,9 @@
-// frontend/src/components/Review/Review.jsx
 import './Review.css';
 import OpenModalButton from '../OpenModalButton'; 
 import ConfirmDelete from './ConfirmDelete';
 import UpdateReview from './UpdateReview';
 
-const ReviewsComponent = ({ reviews = [], user, isOwner, spotId }) => { // Default to empty array
-  //const dispatch = useDispatch();
+const ReviewsComponent = ({ reviews = [], user, isOwner, spotId }) => { 
 
   const formatReviewDate = (dateString) => {
     const date = new Date(dateString);
@@ -15,7 +13,7 @@ const ReviewsComponent = ({ reviews = [], user, isOwner, spotId }) => { // Defau
 
   return (
     <div className="reviews-component">
-      {/* Display reviews */}
+
       {reviews.length > 0 ? (
         <ul className="reviews-list" data-testid='review-list'>
           {reviews.map(review => (

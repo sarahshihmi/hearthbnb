@@ -1,4 +1,3 @@
-/* Manage Spots Container */
 .manage-spots-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -21,33 +20,33 @@
   color: black;
 }
 
-/* Manage Spots Grid */
+
 .manage-spots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
   gap: 50px;
   padding: 20px;
 }
 
 @media (min-width: 1200px) {
   .manage-spots-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .manage-spots-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .manage-spots-grid {
-    grid-template-columns: 1fr; /* 1 column for small screens */
+    grid-template-columns: 1fr; 
   }
 }
 
-/* Spot Tile Styling */
+
 .spot-tile {
   background-color: #181818;
   padding: 10px;
@@ -58,17 +57,17 @@
 }
 
 .spot-tile:hover {
-  transform: scale(1.05); /* Slight scale on hover */
+  transform: scale(1.05);
 }
 
-/* Spot Image */
+
 .spot-image {
   width: 100%;
   height: auto;
   border-radius: 5px;
 }
 
-/* Placeholder Image */
+
 .placeholder-image {
   width: 100%;
   height: 150px;
@@ -81,7 +80,7 @@
   font-size: 1.2em;
 }
 
-/* Spot Details */
+
 .spot-details {
   padding: 10px 0;
 }
@@ -114,7 +113,6 @@
 
 .update-button,
 .delete-button {
- /* Buttons take up 45% of the available width */
   padding: 10px;
   font-size: 1em;
   border: none;
@@ -140,11 +138,10 @@
   background-color: #ff787d;
 }
 
-/* Tooltip for the spot */
 .spot-tile::after {
-  content: attr(data-tooltip); /* Get tooltip text from data attribute */
+  content: attr(data-tooltip);
   position: absolute;
-  bottom: 100%; /* Position above the tile */
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #333;
@@ -159,5 +156,5 @@
 }
 
 .spot-tile:hover::after {
-  opacity: 1; /* Show tooltip on hover */
+  opacity: 1;
 }

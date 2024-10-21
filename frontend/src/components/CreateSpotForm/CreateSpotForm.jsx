@@ -1,4 +1,3 @@
-// frontend/src/components/CreateSpotForm/CreateSpotForm.jsx
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -32,14 +31,14 @@ const CreateSpotForm = () => {
     e.preventDefault();
     setErrors({});
 
-    // Validations
+
     const validationErrors = {};
     if (!form.country) validationErrors.country = 'Country is required';
     if (!form.address) validationErrors.address = 'Address is required';
     if (!form.city) validationErrors.city = 'City is required';
     if (!form.state) validationErrors.state = 'State is required';
 
-    // Latitude Validation
+
     if (!form.lat) {
       validationErrors.lat = 'Latitude is required';
     } else {
@@ -49,7 +48,7 @@ const CreateSpotForm = () => {
       }
     }
 
-    // Longitude Validation
+
     if (!form.lng) {
       validationErrors.lng = 'Longitude is required';
     } else {
@@ -66,7 +65,7 @@ const CreateSpotForm = () => {
     if (!form.previewImageUrl)
       validationErrors.previewImageUrl = 'Preview image is required';
 
-    // Image URL Validation
+
     const imageUrlPattern = /\.(jpeg|jpg|png)$/i;
     if (form.previewImageUrl && !imageUrlPattern.test(form.previewImageUrl)) {
       validationErrors.previewImageUrl = 'Image URL must end in .png, .jpg, or .jpeg';
@@ -83,7 +82,7 @@ const CreateSpotForm = () => {
       return;
     }
 
-    // Prepare the data
+
     const spotData = {
       country: form.country,
       address: form.address,
@@ -109,7 +108,6 @@ const CreateSpotForm = () => {
     <div className="create-spot-form-container" data-testid='create-spot-form'>
       <h1 data-testid='form-title'>Create a New Spot</h1>
       <form onSubmit={handleSubmit}>
-        {/* Location Section */}
         <hr className="separator" />
         <h2>Where is your place located?</h2>
         <p>Guests will only get your exact address once they booked a reservation.</p>
@@ -144,7 +142,6 @@ const CreateSpotForm = () => {
           </div>
         </div>
 
-        {/* Description Section */}
         <hr className="separator" />
         <h2>Describe your place to guests</h2>
         <p>Mention the best features of your space, any special amentities like
@@ -152,7 +149,6 @@ const CreateSpotForm = () => {
         {errors.description && <span className="error-message">{errors.description}</span>}
         <textarea name="description" placeholder="Please write at least 30 characters" value={form.description} onChange={handleInputChange} />
 
-        {/* Title Section */}
         <hr className="separator" />
         <h2>Create a title for your spot</h2>
         <p>Catch guests attention with a spot title that highlights what makes
@@ -160,7 +156,7 @@ const CreateSpotForm = () => {
         {errors.name && <span className="error-message">{errors.name}</span>}
         <input name="name" placeholder="Name of your spot" value={form.name} onChange={handleInputChange} />
 
-        {/* Price Section */}
+
         <hr className="separator" />
         <h2>Set a base price for your spot</h2>
         <p>Competitive pricing can help your listing stand out and rank higher
@@ -177,7 +173,6 @@ const CreateSpotForm = () => {
           />
         </div>
 
-        {/* Photos Section */}
         <hr className="separator" />
         <h2>Liven up your spot with photos</h2>
         <p>Submit a link to at least one photo to publish your spot.</p>

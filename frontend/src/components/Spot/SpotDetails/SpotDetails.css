@@ -1,5 +1,5 @@
 .spot-details-container {
-  max-width: 1000px; /* Ensure that the content doesn't stretch too far */
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -17,11 +17,11 @@
   color:#ffffff
 }
 
-/* Grid layout for images */
+
 .images-section {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px; /* Space between images and the next section */
+  margin-bottom: 20px; 
 }
 
 .large-image {
@@ -40,17 +40,17 @@
   height: auto;
 }
 
-/* Separator Line */
+
 .separator {
   margin: 30px 0;
   border: none;
   border-top: 1px solid #ddd;
 }
 
-/* Content Grid */
+
 .content-grid {
   display: grid;
-  grid-template-columns: 65% 30%; /* Adjust columns if necessary */
+  grid-template-columns: 65% 30%; 
   gap: 20px;
 }
 
@@ -92,15 +92,14 @@
   background-color: #ff787d;
 }
 
-/* Reviews heading */
-/* Reviews Section */
+
 .reviews-section {
   margin-top: 30px;
 }
 
-/* Ensure the buttons in reviews-section are not overridden by other styles */
+
 .reviews-section .review-actions button {
-  width: auto; /* Ensure buttons are appropriately sized */
+  width: auto; 
 }
 
 .reviews-heading {

@@ -6,7 +6,7 @@ const GET_USER_SPOTS = 'spot/getUserSpots';
 const PUT_SPOT = 'spot/putSpot';
 const DELETE_SPOT = 'spot/deleteSpot';
 
-// Action Creators
+
 const getSpots = (payload) => {
     return {
         type: GET_SPOTS,
@@ -34,7 +34,7 @@ const removeSpot = (spotId) => ({
     spotId
 });
 
-// Thunk Action Creators
+
 export const getAllSpots = () => async (dispatch) => {
     const res = await csrfFetch('/api/spots');
     
@@ -118,7 +118,7 @@ export const fetchUserSpots = () => async (dispatch) => {
   
     if (res.ok) {
         const data = await res.json();
-        dispatch(getUserSpots(data.Spots)); // Make sure only spots data is dispatched
+        dispatch(getUserSpots(data.Spots)); 
         return data;
     } else {
         const error = await res.json();
@@ -126,20 +126,20 @@ export const fetchUserSpots = () => async (dispatch) => {
     }
 };
 
-// Initial State
+
 const initialState = {
-    spots: [],  // Initial state is an empty array
+    spots: [],  
     spotDetails: {},
     userSpots: []
 };
   
-// Reducer
+
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_SPOTS:
             return {
                 ...state,
-                spots: action.payload  // Update the spots array with the fetched data
+                spots: action.payload 
             };
         case GET_SPOT_DETAILS:
             return {
@@ -169,7 +169,7 @@ const spotsReducer = (state = initialState, action) => {
                 spots: state.spots.filter(spot => spot.id !== action.spotId),
             };
         default:
-            return state;  // Return the current state for any other action
+            return state;
     }
 };
   

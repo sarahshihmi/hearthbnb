@@ -1,6 +1,4 @@
-/* frontend/src/components/Review/ConfirmDelete.css */
-
-.confirm-delete-container {
+\.confirm-delete-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,18 +7,18 @@
   
   .confirm-delete-buttons {
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    width: 100%; /* Make buttons take up full width */
+    flex-direction: column; 
+    width: 100%; 
 }
 
 .delete-button, .cancel-button {
-    width: 100%; /* Ensure both buttons take up the full width */
+    width: 100%; 
     text-align: center;
 }
 
   
   .delete-button {
-    background-color: #ff5a5f; /* Red color */
+    background-color: #ff5a5f; 
     color: white;
     border: none;
     cursor: pointer;
@@ -31,12 +29,12 @@
   }
   
   .delete-button:disabled {
-    background-color: #ff5a5f80; /* Semi-transparent red */
+    background-color: #ff5a5f80; 
     cursor: not-allowed;
   }
   
   .cancel-button {
-    background-color: #6c757d; /* Dark grey */
+    background-color: #6c757d;
     color: white;
     border: none;
     cursor: pointer;

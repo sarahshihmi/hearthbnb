@@ -1,4 +1,4 @@
-/* Spot Tile Container */
+
 .spot-tile {
     padding: 12px;
     display: flex;
@@ -8,7 +8,7 @@
     transition: transform 0.3s ease;
 }
 
-/* Spot Image */
+
 .spot-image {
     width: 100%;
     height: 180px;
@@ -17,7 +17,7 @@
     margin-bottom: 10px;
 }
 
-/* Placeholder Image */
+
 .placeholder-image {
     width: 100%;
     height: 180px;
@@ -31,7 +31,7 @@
     margin-bottom: 10px;
 }
 
-/* Spot Details Wrapper - Splitting into rows */
+
 .spot-details {
     display: flex;
     flex-direction: column;
@@ -39,28 +39,27 @@
     flex-grow: 1;
 }
 
-/* Row 1: Spot Location */
+
 .spot-location {
     font-size: 16px;
     color: #ffffff;
     margin: 0;
 }
 
-/* Row 2: Flexbox for Location and Rating */
 .spot-row {
     display: flex;
-    justify-content: space-between;  /* Align location on left, rating on right */
-    align-items: center; /* Adjust space between rows */
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Column 1 (75%) - City/State */
+
 .spot-location-small {
     font-size: 14px;
     color: #ffffff;
     text-align: left;
 }
 
-/* Column 2 (25%) - Rating */
+
 .spot-rating {
     display: flex;
     align-items: center;
@@ -68,7 +67,7 @@
     color: #a71b19;
 }
 
-/* Row 3: Spot Price */
+
 .spot-price {
     font-size: 16px;
     font-weight: bold;
@@ -76,7 +75,7 @@
     text-align: left;
 }
 
-/* Star Icon */
+
 .star-icon {
     color: #a71b19;
     margin-right: 5px;

@@ -1,4 +1,3 @@
-// frontend/src/components/SpotTile/SpotTile.jsx
 import './SpotTile.css';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';

@@ -19,7 +19,7 @@ const SpotList = () => {
         <SpotTile key={spot.id} spot={spot} />
       ))
     ) : (
-      <p>No spots available.</p>  // Handle empty state
+      <p>No spots available.</p>
     )}
     </div>
   );

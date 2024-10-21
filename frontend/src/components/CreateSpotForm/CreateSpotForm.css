@@ -1,27 +1,26 @@
-/* frontend/src/components/CreateSpotForm/CreateSpotForm.css */
 .create-spot-form-container {
   max-width: 800px;
-  margin: 0 auto; /* Centers the form container horizontally */
+  margin: 0 auto; 
   padding: 20px;
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers child elements horizontally */
+  align-items: center; 
 }
 
 .create-spot-form-container h1 {
-  text-align: center; /* Centers the main heading */
+  text-align: center; 
   margin-bottom: 20px;
 }
 
 .create-spot-form-container h2 {
   margin-top: 20px;
   color: white;
-  text-align: center; /* Centers section headings */
+  text-align: center;
 }
 
 .create-spot-form-container p {
-  text-align: center; /* Centers descriptive text */
+  text-align: center; 
   margin-bottom: 10px;
 }
 
@@ -29,14 +28,14 @@ input, textarea {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
-  box-sizing: border-box; /* Ensures padding doesn't affect total width */
+  box-sizing: border-box; 
 }
 
 .error-message {
   color: red;
   font-size: 0.9em;
-  width: 100%; /* Ensures error messages align with inputs */
-  text-align: left; /* Aligns error messages to the left for readability */
+  width: 100%; 
+  text-align: left;
 }
 
 button {
@@ -46,83 +45,76 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  width: 100%; /* Ensures button spans full width */
+  width: 100%; 
 }
 
 button:hover {
   background-color: #ff787d;
 }
 
-/* New Styles */
-
-/* Input Row Container */
 .input-row {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  width: 100%; /* Ensures the row takes full width */
+  width: 100%;
 }
 
-/* City and State Groups */
 .city-group {
-  flex: 3; /* 75% */
+  flex: 3;
   display: flex;
   align-items: center;
 }
 
 .state-group {
-  flex: 1; /* 25% */
+  flex: 1; 
 }
 
-/* Latitude and Longitude Groups */
 .lat-group {
-  flex: 1; /* 50% */
+  flex: 1; 
   display: flex;
   align-items: center;
 }
 
 .lng-group {
-  flex: 1; /* 50% */
+  flex: 1;
 }
 
-/* Comma Styling */
 .comma {
   margin: 0 5px;
   font-size: 1.2em;
   color: white;
 }
 
-/* Price Input Container */
+
 .price-input-container {
   display: flex;
   align-items: center;
-  width: 100%; /* Ensures the container spans full width */
-  margin-bottom: 10px; /* Adds space below the price field */
+  width: 100%; 
+  margin-bottom: 10px; 
 }
 
 .price-input-container .dollar-sign {
   margin-right: 5px;
   font-size: 1.2em;
   color: white;
-  flex: 0 0 auto; /* Prevents the dollar sign from stretching */
+  flex: 0 0 auto; 
 }
 
 .price-input-container input {
-  flex: 1; /* Allows the input to take the remaining space */
-  width: 100%; /* Ensures input spans full width within flex container */
+  flex: 1; 
+  width: 100%; 
 }
 
-/* Image URL Group */
+
 .image-url-group {
-  width: 100%; /* Ensures each image URL input spans full width */
-  margin-bottom: 10px; /* Adds space below each image URL field */
+  width: 100%; 
+  margin-bottom: 10px; 
 }
 
 .image-url-group input {
-  width: 100%; /* Reinforces full width */
+  width: 100%;
 }
 
-/* Separator Styling */
 .separator {
   border: 0;
   height: 2px;

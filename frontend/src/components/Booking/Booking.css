@@ -1,18 +1,18 @@
 .booking-component {
-  border: 2px solid black; /* Add border for matching design */
-  border-radius: 8px; /* Rounded corners */
+  border: 2px solid black; 
+  border-radius: 8px;
   padding: 15px;
   width: 100%;
-  max-width: 300px; /* Set a max width */
-  margin: 0 auto; /* Center align */
+  max-width: 300px; 
+  margin: 0 auto; 
 }
 
 .booking-info {
   display: flex;
-  justify-content: space-between; /* Ensure price and review summary are on the same row */
-  align-items: center; /* Vertically center them */
+  justify-content: space-between; 
+  align-items: center;
   margin-bottom: 15px;
-  font-size: 16px; /* Adjust font size for consistency */
+  font-size: 16px;
 }
 
 .price-section {
@@ -23,7 +23,7 @@
 
 .review-summary {
   font-size: 16px;
-  color: white; /* Changed to black for consistency with the reference image */
+  color: white; 
 }
 
 .dot {
@@ -31,7 +31,7 @@
 }
 
 .reserve-button {
-  width: 100%; /* Full width button */
+  width: 100%; 
   background-color: #f65e5e;
   color: white;
   padding: 10px;

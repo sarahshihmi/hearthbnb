@@ -1,13 +1,12 @@
-// frontend/src/store/review.js
 import { csrfFetch } from './csrf';
 
-// Action Types
+
 const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
 const ADD_REVIEW = 'reviews/ADD_REVIEW';
 const REMOVE_REVIEW = 'reviews/REMOVE_REVIEW';
-const UPDATE_REVIEW = 'reviews/UPDATE_REVIEWS'; // New Action Type
+const UPDATE_REVIEW = 'reviews/UPDATE_REVIEWS'; 
 
-// Action Creators
+
 const loadReviews = (reviews) => ({
   type: LOAD_REVIEWS,
   reviews,
@@ -23,14 +22,12 @@ const removeReview = (reviewId) => ({
   reviewId,
 });
 
-const updateReviewAction = (review) => ({ // New Action Creator
+const updateReviewAction = (review) => ({
   type: UPDATE_REVIEW,
   review,
 });
 
-// Thunk Action Creators
 
-// Fetch reviews for a spot
 export const fetchReviews = (spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
 
@@ -40,9 +37,9 @@ export const fetchReviews = (spotId) => async (dispatch) => {
   }
 };
 
-// Fetch reviews for the current user
+
 export const fetchUserReviews = () => async (dispatch) => {
-    const response = await csrfFetch(`/api/reviews/current`); // Assuming this is the API route for current user's reviews
+    const response = await csrfFetch(`/api/reviews/current`); 
   
     if (response.ok) {
       const { Reviews } = await response.json();
@@ -50,11 +47,11 @@ export const fetchUserReviews = () => async (dispatch) => {
     }
   };
   
-// Post a new review
+
 export const postReview = (spotId, reviewData) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' }, // Ensure headers are set
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(reviewData),
   });
 
@@ -64,7 +61,7 @@ export const postReview = (spotId, reviewData) => async (dispatch) => {
   }
 };
 
-// Delete a review
+
 export const deleteReview = (reviewId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE',
@@ -75,18 +72,18 @@ export const deleteReview = (reviewId) => async (dispatch) => {
   }
 };
 
-// **New Thunk for Updating a Review**
+
 export const updateReview = (reviewId, reviewData) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' }, // Ensure headers are set
+    headers: { 'Content-Type': 'application/json' }, 
     body: JSON.stringify(reviewData),
   });
 
   if (response.ok) {
     const updatedReview = await response.json();
     dispatch(updateReviewAction(updatedReview));
-    return updatedReview; // Optional: Return updated review for further use
+    return updatedReview; 
   } else {
     const errorData = await response.json();
     if (errorData.message) {
@@ -97,7 +94,7 @@ export const updateReview = (reviewId, reviewData) => async (dispatch) => {
   }
 };
 
-// Reviews Reducer
+
 const initialState = { reviews: [] };
 
 const reviewsReducer = (state = initialState, action) => {
@@ -108,7 +105,7 @@ const reviewsReducer = (state = initialState, action) => {
       return { ...state, reviews: [action.review, ...state.reviews] };
     case REMOVE_REVIEW:
       return { ...state, reviews: state.reviews.filter(review => review.id !== action.reviewId) };
-    case UPDATE_REVIEW: // New Reducer Case
+    case UPDATE_REVIEW: 
       return {
         ...state,
         reviews: state.reviews.map(review =>
