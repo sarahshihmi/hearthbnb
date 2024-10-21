@@ -10,7 +10,7 @@ const BookingComponent = ({ price, avgRating, reviewCount }) => {
     <div className="booking-component">
       <div className="booking-info">
         <div className="price-section" data-testid='spot-price'>
-          <span className="price">${price}</span> / night
+          <span className="price">${price}</span> night
         </div>
         <div className="review-summary" data-testid='spot-rating'>
           ★ {avgRating}  {/* avgRating is already formatted */}

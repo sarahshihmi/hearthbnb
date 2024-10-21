@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../../context/Modal';
 import { deleteSpot } from '../../../store/spot';
-import './ConfirmDeleteSpot.css';
+import '../../Review/ConfirmDelete.css';
 import { useState } from 'react';
 
 const ConfirmDeleteSpot = ({ spotId }) => {

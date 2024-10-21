@@ -1,17 +1,16 @@
-// frontend/src/components/ManageSpots/ManageSpots.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { fetchUserSpots } from '../../store/spot';
 import './ManageSpots.css';
-import '../Spot/SpotTile/SpotTile.css'
+import '../Spot/SpotTile/SpotTile.css';
 import { FaStar } from 'react-icons/fa';
 import OpenModalButton from '../OpenModalButton';
 import ConfirmDeleteSpot from '../Spot/ConfirmDeleteSpot';
 
 const ManageSpots = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize navigate hook
   const userSpots = useSelector(state => state.spots.userSpots);
   const user = useSelector(state => state.session?.user);
 
@@ -23,6 +22,10 @@ const ManageSpots = () => {
 
   const handleUpdateClick = (spotId) => {
     navigate(`/spots/${spotId}/edit`);
+  };
+
+  const handleTileClick = (spotId) => {
+    navigate(`/spots/${spotId}`); // Navigate to the spot details page
   };
 
   if (!userSpots.length) {
@@ -44,7 +47,12 @@ const ManageSpots = () => {
       </button>
       <div className="manage-spots-grid">
         {userSpots.map((spot) => (
-          <div className="spot-tile" key={spot.id} data-tooltip={spot.name}>
+          <div
+            className="spot-tile"
+            key={spot.id}
+            data-tooltip={spot.name}
+            onClick={() => handleTileClick(spot.id)} // Add click handler here
+          >
             {spot.previewImage ? (
               <img src={spot.previewImage} alt={spot.name} className="spot-image" />
             ) : (
@@ -60,11 +68,15 @@ const ManageSpots = () => {
               <div className="spot-price">${spot.price}/night</div>
             </div>
             <div className="spot-actions">
-              <button onClick={() => handleUpdateClick(spot.id)} className="update-button">Update</button>
+              <button onClick={(e) => {
+                e.stopPropagation(); // Prevent navigating when clicking on update button
+                handleUpdateClick(spot.id);
+              }} className="update-button">Update</button>
               <OpenModalButton
                 buttonText="Delete"
                 modalComponent={<ConfirmDeleteSpot spotId={spot.id} />}
                 className="delete-button"
+                onClick={(e) => e.stopPropagation()} // Prevent navigating when clicking on delete button
               />
             </div>
           </div>

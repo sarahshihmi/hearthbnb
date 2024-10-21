@@ -6,7 +6,7 @@
     padding: 20px;
   }
   
-  .update-review-modal h2 {
+  .update-review-modal title {
     margin-bottom: 15px;
   }
   
@@ -20,6 +20,9 @@
     font-weight: bold;
   }
   
+  .update-review-title {
+    text-align:center
+  }
   .update-review-modal textarea,
   .update-review-modal input {
     width: 100%;
@@ -34,7 +37,7 @@
   }
   
   .update-review-modal .submit-button {
-    background-color: #4CAF50;
+    background-color: #da190b;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -43,7 +46,7 @@
   }
   
   .update-review-modal .submit-button:hover {
-    background-color: #45a049;
+    background-color: #da190b;
   }
   
   .update-review-modal .cancel-button {
@@ -62,5 +65,25 @@
   .error {
     color: red;
     font-size: 0.9em;
+  }
+  
+  .star-rating {
+    display: flex;
+    gap: 5px;
+    font-size: 2rem;
+  }
+  
+  .star {
+    cursor: pointer;
+    color: lightgray;
+    transition: color 0.2s;
+  }
+  
+  .star.selected {
+    color: darkred; /* Change this to the shade of dark red you want */
+  }
+  
+  button:disabled {
+    background-color: #ccc;
   }
   

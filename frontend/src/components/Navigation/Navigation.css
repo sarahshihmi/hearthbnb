@@ -40,7 +40,8 @@ ul li {
     cursor: pointer;
     position: relative;
     margin-left: 20px;
-    color:#a71b19
+    color:#a71b19;
+    word-break:break-word;
 }
 
 /* Create a New Spot link */
@@ -65,7 +66,7 @@ ul li {
 .profile-button button {
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 15px;
     cursor: pointer;
 }
 

@@ -94,8 +94,9 @@ const CreateSpotForm = () => {
       name: form.name,
       description: form.description,
       price: parseFloat(form.price),
+      previewImageUrl: form.previewImageUrl,
+      imageUrls: form.imageUrls,
     };
-
     try {
       const newSpot = await dispatch(createSpot(spotData));
       navigate(`/spots/${newSpot.id}`);

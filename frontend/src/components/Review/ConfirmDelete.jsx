@@ -31,7 +31,6 @@ const ConfirmDelete = ({ reviewId }) => {
       <h2>Confirm Delete</h2>
       <p>Are you sure you want to delete this review?</p>
       {error && <p className="error-message">{error}</p>}
-      <div className="confirm-delete-buttons">
         <button 
           className="delete-button" 
           onClick={handleDelete}
@@ -42,7 +41,6 @@ const ConfirmDelete = ({ reviewId }) => {
         <button className="cancel-button" onClick={handleCancel}>
           No (Keep Review)
         </button>
-      </div>
     </div>
   );
 };

@@ -1,13 +1,10 @@
-// frontend/src/components/Review/UpdateReview.jsx
-
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateReview } from '../../store/review'; // Ensure this path is correct
 import { useModal } from '../../context/Modal'; // Adjust the path based on your project structure
 import './UpdateReview.css'; // Optional: for styling
 
-
-const UpdateReview = ({ review }) => {
+const UpdateReview = ({ review }) => { // Accept spotName as a prop
     const dispatch = useDispatch();
     const { closeModal } = useModal(); // Access closeModal from context
     const [editedReview, setEditedReview] = useState(review.review);
@@ -42,17 +39,20 @@ const UpdateReview = ({ review }) => {
         }
       }
     };
+
+    // Helper function to handle star click
+    const handleStarClick = (rating) => {
+      setStars(rating);
+    };
   
     return (
       <div className="update-review-modal">
-        <h2>Edit Your Review</h2>
+        <div className="update-review-title">How was your stay?</div>
         <form onSubmit={handleSubmit}>
           {errors.backend && <p className="error">{errors.backend}</p>}
           <div className="form-group">
-            <label htmlFor="review">Review</label>
             {errors.review && <p className="error">{errors.review}</p>}
             <textarea
-              id="review"
               value={editedReview}
               onChange={(e) => setEditedReview(e.target.value)}
               placeholder="Edit your review here..."
@@ -60,30 +60,26 @@ const UpdateReview = ({ review }) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="stars">Stars</label>
             {errors.stars && <p className="error">{errors.stars}</p>}
-            <input
-              id="stars"
-              type="number"
-              value={stars}
-              onChange={(e) => setStars(Number(e.target.value))}
-              min="1"
-              max="5"
-              required
-            />
+            <div className="star-rating">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={star <= stars ? "star selected" : "star"}
+                  onClick={() => handleStarClick(star)}
+                >
+                  ★
+                </span>
+              ))}
+              <span> stars</span>
+            </div>
           </div>
-          <div className="form-buttons">
-            <button type="submit" className="submit-button">
-              Update Your Review
-            </button>
-            <button type="button" className="cancel-button" onClick={closeModal}>
-              Cancel
-            </button>
-          </div>
+          <button type="submit" className="submit-button full-width">
+            Update Your Review
+          </button>
         </form>
       </div>
     );
   };
   
   export default UpdateReview;
-  

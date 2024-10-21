@@ -1,8 +1,8 @@
-// PostReview.jsx
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postReview } from '../../store/review';
 import { useModal } from '../../context/Modal';
+import './UpdateReview.css'
 
 const PostReview = ({ spotId }) => {
   const dispatch = useDispatch();
@@ -22,13 +22,17 @@ const PostReview = ({ spotId }) => {
       return;
     }
 
-    // Corrected dispatch: pass spotId and reviewData separately
     dispatch(postReview(spotId, { review, stars }))
       .then(() => closeModal())
       .catch((err) => {
         const data = err.response?.data;
         if (data && data.errors) setErrors(data.errors);
       });
+  };
+
+  // Helper function to handle star click
+  const handleStarClick = (rating) => {
+    setStars(rating);
   };
 
   return (
@@ -43,16 +47,20 @@ const PostReview = ({ spotId }) => {
           required
         />
         {errors.stars && <p className="error">{errors.stars}</p>}
-        <label htmlFor="stars">Stars</label>
-        <input 
-          id="stars"
-          type="number" 
-          value={stars} 
-          onChange={(e) => setStars(Number(e.target.value))}
-          min="1" 
-          max="5"
-          required
-        />
+
+        <div className="star-rating">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <span
+              key={star}
+              className={star <= stars ? "star selected" : "star"}
+              onClick={() => handleStarClick(star)}
+            >
+              ★
+            </span>
+          ))}
+         Stars
+        </div>
+
         <button type="submit" disabled={review.length < 10 || stars === 0}>
           Submit Your Review
         </button>
