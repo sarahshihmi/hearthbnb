@@ -20,7 +20,13 @@ module.exports = {
     logQueryParameters: true,
     typeValidation: true
   },
-  production: {
+  production: process.env.USE_PROD_SQLITE ? {
+    storage: config.dbFile,
+    dialect: "sqlite",
+    seederStorage: "sequelize",
+    logQueryParameters: true,
+    typeValidation: true
+  } : {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     seederStorage: 'sequelize',
