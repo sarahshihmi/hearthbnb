@@ -1,3 +1,3 @@
 Welcome to HearthBnB! Where will you stay, traveler?
 
-Live Link: [https://hearthbnb.onrender.com](https://hearthbnb.fly.dev/)
+Live Link: [https://hearthbnb.fly.dev/](https://hearthbnb.fly.dev/)
