@@ -15,5 +15,6 @@ Step into the world of Azeroth and book a stay at its most legendary inns.
 **For the Horde! For the Alliance! For Azeroth!** 🍻
 
 _If you're reading this, let's connect! I'd love to provide more insight on this project._  
+
 **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/sarahshihmi)  
 **Email:** [sarahashih@gmail.com](mailto:sarahashih@gmail.com)  
